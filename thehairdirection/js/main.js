@@ -82,7 +82,7 @@ const heroImages = [
   'https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg',
   // Bridal
   'https://i.ibb.co/fV6vBXS6/photo-1549236177-f9b0031756eb-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ixlib.jpg',
-  // Stylist at work / portrait
+  // Stylist at work
   'https://i.ibb.co/WW4BTgzf/premium-photo-1676677522880-639b99b1f27b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg'
 ];
 const heroFallback = 'https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg';
