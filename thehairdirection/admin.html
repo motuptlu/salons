@@ -7,10 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Firebase SDK -->
+  <!-- Firebase SDK (Only App + Database - NO STORAGE) -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
   
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
@@ -31,13 +30,13 @@
     
     /* ADMIN DASHBOARD */
     .admin-container{max-width:1400px; margin:0 auto; padding:20px}
-    .admin-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; padding:20px; background:rgba(255,255,255,.05); border-radius:16px; border:1px solid rgba(168,216,234,.2)}
+    .admin-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; padding:20px; background:rgba(255,255,255,.05); border-radius:16px; border:1px solid rgba(168,216,234,.2); flex-wrap:wrap; gap:15px}
     .admin-header h1{font-size:1.8rem; background:linear-gradient(135deg,#A8D8EA,#D4AF37); -webkit-background-clip:text; -webkit-text-fill-color:transparent}
     .btn-logout{padding:10px 20px; background:rgba(255,0,0,.2); border:1px solid rgba(255,0,0,.5); color:#fff; border-radius:50px; cursor:pointer; transition:.3s}
     .btn-logout:hover{background:rgba(255,0,0,.3)}
     
     .tabs{display:flex; gap:10px; margin-bottom:30px; flex-wrap:wrap}
-    .tab{padding:12px 24px; background:rgba(255,255,255,.05); border:2px solid rgba(168,216,234,.2); border-radius:50px; cursor:pointer; transition:.3s; font-weight:600}
+    .tab{padding:12px 24px; background:rgba(255,255,255,.05); border:2px solid rgba(168,216,234,.2); border-radius:50px; cursor:pointer; transition:.3s; font-weight:600; font-size:.9rem}
     .tab.active{background:linear-gradient(135deg,#A8D8EA,#7EC8E3); color:#000; border-color:transparent}
     .tab:hover{transform:translateY(-2px)}
     
@@ -49,7 +48,7 @@
     .form-row{display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px}
     @media (max-width:768px){.form-row{grid-template-columns:1fr}}
     
-    .input-field{width:100%; padding:12px; background:rgba(255,255,255,.1); border:2px solid rgba(168,216,234,.3); color:#fff; border-radius:10px; transition:.3s}
+    .input-field{width:100%; padding:12px; background:rgba(255,255,255,.1); border:2px solid rgba(168,216,234,.3); color:#fff; border-radius:10px; transition:.3s; font-family:inherit}
     .input-field:focus{outline:none; border-color:#A8D8EA; box-shadow:0 0 0 4px rgba(168,216,234,.2)}
     textarea.input-field{min-height:100px; resize:vertical}
     
@@ -58,13 +57,21 @@
     
     .success-msg{background:rgba(0,255,0,.2); border:1px solid rgba(0,255,0,.5); padding:12px; border-radius:8px; margin-top:15px; color:#4ade80; display:none}
     
+    .loading-msg{background:rgba(255,165,0,.2); border:1px solid rgba(255,165,0,.5); padding:12px; border-radius:8px; margin-top:15px; color:#ffa500; display:none}
+    
     .image-upload-area{border:2px dashed rgba(168,216,234,.5); padding:30px; border-radius:10px; text-align:center; cursor:pointer; transition:.3s; margin-bottom:15px}
     .image-upload-area:hover{border-color:#A8D8EA; background:rgba(168,216,234,.05)}
     .image-upload-area input{display:none}
     .preview-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin-top:15px}
-    .preview-item{position:relative; border-radius:8px; overflow:hidden; aspect-ratio:1}
+    .preview-item{position:relative; border-radius:8px; overflow:hidden; aspect-ratio:1; border:2px solid rgba(168,216,234,.3)}
     .preview-item img{width:100%; height:100%; object-fit:cover}
-    .preview-item button{position:absolute; top:5px; right:5px; background:rgba(255,0,0,.8); color:#fff; border:none; border-radius:50%; width:25px; height:25px; cursor:pointer; font-size:14px}
+    .preview-item button{position:absolute; top:5px; right:5px; background:rgba(255,0,0,.8); color:#fff; border:none; border-radius:50%; width:25px; height:25px; cursor:pointer; font-size:14px; transition:.3s}
+    .preview-item button:hover{background:rgba(255,0,0,1); transform:scale(1.1)}
+    
+    .service-item{background:rgba(255,255,255,.05); padding:20px; border-radius:12px; margin-bottom:15px; border:1px solid rgba(168,216,234,.2)}
+    .service-item h4{color:#A8D8EA; margin-bottom:15px}
+    .btn-remove{background:rgba(255,0,0,.3); color:#fff; border:none; padding:8px 16px; border-radius:20px; cursor:pointer; margin-top:10px; transition:.3s}
+    .btn-remove:hover{background:rgba(255,0,0,.5)}
   </style>
 </head>
 <body>
@@ -95,7 +102,7 @@
       <div class="admin-header">
         <div>
           <h1>✨ Admin Dashboard</h1>
-          <p style="color:rgba(255,255,255,.6); margin-top:5px">Manage your website content</p>
+          <p style="color:rgba(255,255,255,.6); margin-top:5px">Manage your website content (ImgBB Hosting - Free Forever)</p>
         </div>
         <button class="btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
       </div>
@@ -125,13 +132,15 @@
             <label>Subtitle/Description</label>
             <textarea class="input-field" id="heroSubtitleInput" placeholder="Signature haircuts, couture colour..."></textarea>
           </div>
-          <h3 style="margin-top:30px">Hero Background Images (6 images)</h3>
+          <h3 style="margin-top:30px">Hero Background Images (Max 6 - HD Quality)</h3>
+          <p style="color:rgba(255,255,255,.6); margin-bottom:15px; font-size:.9rem">Images will be uploaded to ImgBB (free hosting)</p>
           <div class="image-upload-area" id="heroImageUpload">
             <i class="fas fa-cloud-upload-alt" style="font-size:3rem; color:#A8D8EA; margin-bottom:10px"></i>
             <p>Click to upload hero images (Max 6)</p>
             <input type="file" id="heroImagesInput" accept="image/*" multiple>
           </div>
           <div class="preview-grid" id="heroImagesPreview"></div>
+          <div class="loading-msg" id="heroLoading">⏳ Uploading images to ImgBB...</div>
           <button type="submit" class="btn-save">💾 Save Hero Section</button>
           <div class="success-msg" id="heroSuccess">✅ Hero section updated successfully!</div>
         </form>
@@ -160,6 +169,7 @@
             <input type="file" id="aboutImageInput" accept="image/*">
           </div>
           <div class="preview-grid" id="aboutImagePreview"></div>
+          <div class="loading-msg" id="aboutLoading">⏳ Uploading...</div>
           <button type="submit" class="btn-save">💾 Save About Section</button>
           <div class="success-msg" id="aboutSuccess">✅ About section updated!</div>
         </form>
@@ -168,13 +178,12 @@
       <!-- SERVICES TAB -->
       <div id="services" class="tab-content">
         <form class="form-section" id="servicesForm">
-          <h3>Services (Current: 10 services)</h3>
-          <p style="color:rgba(255,255,255,.6); margin-bottom:20px">Manage your salon services. Each service needs: Image, Title, Description</p>
-          <div id="servicesContainer">
-            <!-- Service items will be dynamically loaded here -->
-          </div>
+          <h3>Services Management</h3>
+          <p style="color:rgba(255,255,255,.6); margin-bottom:20px">Add/Edit your salon services (Current: <span id="serviceCount">0</span>)</p>
+          <div id="servicesContainer"></div>
           <button type="button" class="btn-save" id="addServiceBtn">➕ Add New Service</button>
-          <button type="submit" class="btn-save">💾 Save All Services</button>
+          <div class="loading-msg" id="servicesLoading">⏳ Uploading services...</div>
+          <button type="submit" class="btn-save" style="background:linear-gradient(135deg,#4ade80,#22c55e)">💾 Save All Services</button>
           <div class="success-msg" id="servicesSuccess">✅ Services updated!</div>
         </form>
       </div>
@@ -182,14 +191,15 @@
       <!-- GALLERY TAB -->
       <div id="gallery" class="tab-content">
         <form class="form-section" id="galleryForm">
-          <h3>Gallery Images (Current: 15 images)</h3>
-          <p style="color:rgba(255,255,255,.6); margin-bottom:20px">Upload your salon work photos. Each image can have: Image, Title, Subtitle</p>
+          <h3>Gallery Images</h3>
+          <p style="color:rgba(255,255,255,.6); margin-bottom:20px">Upload your salon work photos (Current: <span id="galleryCount">0</span>)</p>
           <div class="image-upload-area" id="galleryImageUpload">
             <i class="fas fa-images" style="font-size:3rem; color:#A8D8EA; margin-bottom:10px"></i>
             <p>Click to upload gallery images (Multiple)</p>
             <input type="file" id="galleryImagesInput" accept="image/*" multiple>
           </div>
           <div class="preview-grid" id="galleryImagesPreview"></div>
+          <div class="loading-msg" id="galleryLoading">⏳ Uploading to ImgBB...</div>
           <button type="submit" class="btn-save">💾 Save Gallery</button>
           <div class="success-msg" id="gallerySuccess">✅ Gallery updated!</div>
         </form>
