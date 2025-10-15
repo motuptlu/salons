@@ -198,3 +198,82 @@ window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
+// LOAD DYNAMIC CONTENT FROM FIREBASE
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    // Load Hero Content
+    const heroData = await db.ref('hero').once('value');
+    if (heroData.exists()) {
+      const data = heroData.val();
+      document.getElementById('heroEyebrow').textContent = data.eyebrow || '';
+      document.getElementById('heroTitle').textContent = data.title || '';
+      document.getElementById('heroSubtitle').textContent = data.subtitle || '';
+      
+      // Load Hero Images
+      if (data.images && data.images.length > 0) {
+        const heroSlides = document.getElementById('heroSlides');
+        heroSlides.innerHTML = data.images.map(url => `
+          <div class="swiper-slide">
+            <div class="slide-media">
+              <img src="${url}" alt="Hero image">
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+    
+    // Load About
+    const aboutData = await db.ref('about').once('value');
+    if (aboutData.exists()) {
+      const data = aboutData.val();
+      document.getElementById('aboutTitle').textContent = data.title || '';
+      document.getElementById('aboutDesc1').textContent = data.desc1 || '';
+      document.getElementById('aboutDesc2').textContent = data.desc2 || '';
+      if (data.image) {
+        document.getElementById('aboutImage').src = data.image;
+      }
+    }
+    
+    // Load Services
+    const servicesData = await db.ref('services').once('value');
+    if (servicesData.exists()) {
+      const services = servicesData.val();
+      const servicesGrid = document.getElementById('servicesGrid');
+      servicesGrid.innerHTML = services.map(s => `
+        <div class="service-card pearl-card slide-in-img" data-direction="left">
+          <img loading="lazy" src="${s.image}" alt="${s.title}">
+          <div class="service-info">
+            <div class="icon">${s.icon}</div>
+            <h3>${s.title}</h3>
+            <p>${s.description}</p>
+            <a href="#booking" class="btn pearl-btn">Book Now</a>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    // Load Gallery
+    const galleryData = await db.ref('gallery/images').once('value');
+    if (galleryData.exists()) {
+      const images = galleryData.val();
+      const galleryGrid = document.getElementById('galleryGrid');
+      galleryGrid.innerHTML = images.map((url, i) => `
+        <div class="gallery-item pearl-card slide-in-img" data-direction="${['left','top','right','bottom'][i % 4]}">
+          <img loading="lazy" src="${url}" alt="Gallery ${i + 1}">
+          <div class="gallery-text">
+            <h3>Work ${i + 1}</h3>
+            <p>Professional Finish</p>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    // Re-initialize slide-in observer after dynamic content load
+    document.querySelectorAll('.slide-in-img').forEach(img => {
+      slideInObserver.observe(img);
+    });
+    
+  } catch (error) {
+    console.error('Error loading content:', error);
+  }
+});
