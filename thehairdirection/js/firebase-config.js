@@ -1,12 +1,12 @@
 // Firebase Configuration (Replace with your own Firebase project config)
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY_HERE", // Replace with your Firebase API key
-  authDomain: "your-project.firebaseapp.com",
-  databaseURL: "https://your-project-default-rtdb.firebaseio.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDmYeInEH9tP7ZaBRXuQWstoovezi_dAj4",
+  authDomain: "thehairdirection-d3f31.firebaseapp.com",
+  projectId: "thehairdirection-d3f31",
+  storageBucket: "thehairdirection-d3f31.firebasestorage.app",
+  messagingSenderId: "744475068477",
+  appId: "1:744475068477:web:1208e649d671c59b940254",
+  measurementId: "G-N9GKR32QBY"
 };
 
 // Initialize Firebase
