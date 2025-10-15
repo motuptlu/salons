@@ -1,0 +1,1221 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red235\green235\blue237;\red22\green22\blue24;}
+{\*\expandedcolortbl;;\cssrgb\c93725\c93725\c94510;\cssrgb\c11373\c11373\c12549;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 /* ==========================================\
+   PROFESSIONAL SALON WEBSITE STYLES\
+   The Hair Direction Salon\
+   ========================================== */\
+\
+/* ========== CSS VARIABLES ========== */\
+:root \{\
+    /* Color Palette - Luxury Salon Theme */\
+    --primary-color: #C9A961;        /* Elegant Gold */\
+    --primary-dark: #A68B4E;\
+    --primary-light: #E8D4A0;\
+    --secondary-color: #2C2C2C;      /* Sophisticated Dark */\
+    --accent-pink: #E6C1C5;          /* Soft Pink */\
+    --accent-rose: #D4A5A5;          /* Rose Gold */\
+    --text-dark: #1A1A1A;\
+    --text-light: #666666;\
+    --white: #FFFFFF;\
+    --light-bg: #F9F7F4;\
+    --border-color: #E5E5E5;\
+    \
+    /* Typography */\
+    --font-primary: 'Poppins', sans-serif;\
+    --font-heading: 'Playfair Display', serif;\
+    --font-elegant: 'Cormorant Garamond', serif;\
+    \
+    /* Spacing */\
+    --section-padding: 100px 0;\
+    --container-width: 1200px;\
+    \
+    /* Transitions */\
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);\
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);\
+    \
+    /* Shadows */\
+    --shadow-light: 0 2px 10px rgba(0,0,0,0.05);\
+    --shadow-medium: 0 5px 20px rgba(0,0,0,0.1);\
+    --shadow-heavy: 0 10px 40px rgba(0,0,0,0.15);\
+    --shadow-gold: 0 5px 25px rgba(201,169,97,0.3);\
+\}\
+\
+/* ========== GLOBAL RESET ========== */\
+* \{\
+    margin: 0;\
+    padding: 0;\
+    box-sizing: border-box;\
+\}\
+\
+html \{\
+    scroll-behavior: smooth;\
+    overflow-x: hidden;\
+\}\
+\
+body \{\
+    font-family: var(--font-primary);\
+    color: var(--text-dark);\
+    line-height: 1.7;\
+    overflow-x: hidden;\
+    background-color: var(--white);\
+\}\
+\
+/* ========== PRELOADER ========== */\
+.preloader \{\
+    position: fixed;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #1a1a1a 100%);\
+    display: flex;\
+    justify-content: center;\
+    align-items: center;\
+    z-index: 10000;\
+    transition: opacity 0.5s ease, visibility 0.5s ease;\
+\}\
+\
+.preloader.hidden \{\
+    opacity: 0;\
+    visibility: hidden;\
+\}\
+\
+.loader \{\
+    text-align: center;\
+\}\
+\
+.scissors \{\
+    font-size: 60px;\
+    animation: rotate 2s linear infinite;\
+\}\
+\
+.loader-text \{\
+    font-family: var(--font-heading);\
+    font-size: 28px;\
+    color: var(--primary-color);\
+    margin-top: 20px;\
+    letter-spacing: 2px;\
+    animation: pulse 1.5s ease-in-out infinite;\
+\}\
+\
+@keyframes rotate \{\
+    0% \{ transform: rotate(0deg); \}\
+    100% \{ transform: rotate(360deg); \}\
+\}\
+\
+@keyframes pulse \{\
+    0%, 100% \{ opacity: 1; \}\
+    50% \{ opacity: 0.5; \}\
+\}\
+\
+/* ========== FLOATING WHATSAPP BUTTON ========== */\
+.whatsapp-float \{\
+    position: fixed;\
+    bottom: 30px;\
+    right: 30px;\
+    width: 60px;\
+    height: 60px;\
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);\
+    color: var(--white);\
+    border-radius: 50%;\
+    display: flex;\
+    justify-content: center;\
+    align-items: center;\
+    font-size: 30px;\
+    box-shadow: var(--shadow-heavy);\
+    z-index: 1000;\
+    transition: var(--transition-smooth);\
+    animation: float 3s ease-in-out infinite;\
+\}\
+\
+.whatsapp-float:hover \{\
+    transform: scale(1.1);\
+    box-shadow: 0 15px 50px rgba(37,211,102,0.4);\
+\}\
+\
+@keyframes float \{\
+    0%, 100% \{ transform: translateY(0px); \}\
+    50% \{ transform: translateY(-10px); \}\
+\}\
+\
+/* ========== NAVIGATION ========== */\
+.navbar \{\
+    position: fixed;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    background: rgba(255, 255, 255, 0.95);\
+    backdrop-filter: blur(10px);\
+    box-shadow: var(--shadow-light);\
+    z-index: 999;\
+    transition: var(--transition-smooth);\
+\}\
+\
+.navbar.scrolled \{\
+    background: rgba(255, 255, 255, 0.98);\
+    box-shadow: var(--shadow-medium);\
+\}\
+\
+.container \{\
+    max-width: var(--container-width);\
+    margin: 0 auto;\
+    padding: 0 20px;\
+\}\
+\
+.nav-wrapper \{\
+    display: flex;\
+    justify-content: space-between;\
+    align-items: center;\
+    padding: 20px 0;\
+\}\
+\
+.logo h1 \{\
+    font-family: var(--font-heading);\
+    font-size: 28px;\
+    color: var(--secondary-color);\
+    font-weight: 700;\
+    letter-spacing: 1px;\
+    margin-bottom: 5px;\
+\}\
+\
+.tagline \{\
+    font-family: var(--font-elegant);\
+    font-size: 12px;\
+    color: var(--primary-color);\
+    letter-spacing: 2px;\
+    text-transform: uppercase;\
+\}\
+\
+.nav-menu \{\
+    display: flex;\
+    align-items: center;\
+    gap: 40px;\
+\}\
+\
+.nav-links \{\
+    display: flex;\
+    list-style: none;\
+    gap: 35px;\
+\}\
+\
+.nav-link \{\
+    color: var(--text-dark);\
+    text-decoration: none;\
+    font-weight: 500;\
+    font-size: 15px;\
+    position: relative;\
+    transition: var(--transition-smooth);\
+\}\
+\
+.nav-link::after \{\
+    content: '';\
+    position: absolute;\
+    bottom: -5px;\
+    left: 0;\
+    width: 0;\
+    height: 2px;\
+    background: var(--primary-color);\
+    transition: var(--transition-smooth);\
+\}\
+\
+.nav-link:hover,\
+.nav-link.active \{\
+    color: var(--primary-color);\
+\}\
+\
+.nav-link:hover::after,\
+.nav-link.active::after \{\
+    width: 100%;\
+\}\
+\
+.btn-primary \{\
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);\
+    color: var(--white);\
+    padding: 12px 30px;\
+    border-radius: 30px;\
+    text-decoration: none;\
+    font-weight: 600;\
+    transition: var(--transition-smooth);\
+    box-shadow: var(--shadow-gold);\
+\}\
+\
+.btn-primary:hover \{\
+    transform: translateY(-3px);\
+    box-shadow: 0 10px 30px rgba(201,169,97,0.4);\
+\}\
+\
+/* Hamburger Menu */\
+.hamburger \{\
+    display: none;\
+    flex-direction: column;\
+    gap: 5px;\
+    cursor: pointer;\
+    z-index: 1001;\
+\}\
+\
+.hamburger span \{\
+    width: 25px;\
+    height: 3px;\
+    background: var(--secondary-color);\
+    border-radius: 3px;\
+    transition: var(--transition-smooth);\
+\}\
+\
+.hamburger.active span:nth-child(1) \{\
+    transform: rotate(45deg) translate(8px, 8px);\
+\}\
+\
+.hamburger.active span:nth-child(2) \{\
+    opacity: 0;\
+\}\
+\
+.hamburger.active span:nth-child(3) \{\
+    transform: rotate(-45deg) translate(7px, -7px);\
+\}\
+\
+/* ========== HERO SECTION ========== */\
+.hero \{\
+    position: relative;\
+    height: 100vh;\
+    min-height: 700px;\
+    overflow: hidden;\
+\}\
+\
+.hero-slider \{\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+\}\
+\
+.hero-slide \{\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    background-size: cover;\
+    background-position: center;\
+    opacity: 0;\
+    transition: opacity 1.5s ease-in-out;\
+\}\
+\
+.hero-slide.active \{\
+    opacity: 1;\
+\}\
+\
+.hero-overlay \{\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    background: linear-gradient(135deg, rgba(44,44,44,0.7) 0%, rgba(201,169,97,0.3) 100%);\
+\}\
+\
+.hero-content \{\
+    position: relative;\
+    height: 100%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    text-align: center;\
+    z-index: 2;\
+\}\
+\
+.hero-text \{\
+    max-width: 900px;\
+\}\
+\
+.hero-title \{\
+    font-family: var(--font-heading);\
+    font-size: 70px;\
+    font-weight: 800;\
+    color: var(--white);\
+    line-height: 1.2;\
+    margin-bottom: 25px;\
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);\
+\}\
+\
+.title-line \{\
+    display: block;\
+    overflow: hidden;\
+\}\
+\
+.hero-subtitle \{\
+    font-size: 20px;\
+    color: var(--white);\
+    margin-bottom: 40px;\
+    font-weight: 300;\
+    letter-spacing: 1px;\
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.3);\
+\}\
+\
+.hero-buttons \{\
+    display: flex;\
+    gap: 20px;\
+    justify-content: center;\
+\}\
+\
+.btn-hero \{\
+    padding: 16px 40px;\
+    border-radius: 50px;\
+    text-decoration: none;\
+    font-weight: 600;\
+    font-size: 16px;\
+    transition: var(--transition-smooth);\
+    display: inline-block;\
+\}\
+\
+.btn-secondary \{\
+    background: transparent;\
+    color: var(--white);\
+    border: 2px solid var(--white);\
+\}\
+\
+.btn-secondary:hover \{\
+    background: var(--white);\
+    color: var(--secondary-color);\
+    transform: translateY(-3px);\
+\}\
+\
+/* Scroll Indicator */\
+.scroll-indicator \{\
+    position: absolute;\
+    bottom: 40px;\
+    left: 50%;\
+    transform: translateX(-50%);\
+    text-align: center;\
+    z-index: 3;\
+\}\
+\
+.mouse \{\
+    width: 30px;\
+    height: 50px;\
+    border: 2px solid var(--white);\
+    border-radius: 20px;\
+    position: relative;\
+    margin: 0 auto 10px;\
+\}\
+\
+.wheel \{\
+    width: 4px;\
+    height: 10px;\
+    background: var(--white);\
+    border-radius: 2px;\
+    position: absolute;\
+    top: 8px;\
+    left: 50%;\
+    transform: translateX(-50%);\
+    animation: scroll 1.5s infinite;\
+\}\
+\
+@keyframes scroll \{\
+    0% \{ opacity: 1; top: 8px; \}\
+    100% \{ opacity: 0; top: 25px; \}\
+\}\
+\
+.scroll-indicator p \{\
+    color: var(--white);\
+    font-size: 12px;\
+    letter-spacing: 2px;\
+    text-transform: uppercase;\
+\}\
+\
+/* ========== SECTION STYLING ========== */\
+.section-padding \{\
+    padding: var(--section-padding);\
+\}\
+\
+.section-header \{\
+    text-align: center;\
+    margin-bottom: 60px;\
+\}\
+\
+.section-subtitle \{\
+    font-family: var(--font-elegant);\
+    font-size: 18px;\
+    color: var(--primary-color);\
+    letter-spacing: 3px;\
+    text-transform: uppercase;\
+    margin-bottom: 15px;\
+    display: block;\
+\}\
+\
+.section-title \{\
+    font-family: var(--font-heading);\
+    font-size: 48px;\
+    color: var(--secondary-color);\
+    font-weight: 700;\
+    margin-bottom: 20px;\
+\}\
+\
+.title-divider \{\
+    width: 80px;\
+    height: 3px;\
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);\
+    margin: 0 auto;\
+\}\
+\
+/* ========== ABOUT SECTION ========== */\
+.about \{\
+    background: var(--light-bg);\
+\}\
+\
+.about-content \{\
+    display: grid;\
+    grid-template-columns: 1fr 1fr;\
+    gap: 80px;\
+    align-items: center;\
+\}\
+\
+.about-image \{\
+    position: relative;\
+    border-radius: 20px;\
+    overflow: hidden;\
+    box-shadow: var(--shadow-heavy);\
+\}\
+\
+.about-image img \{\
+    width: 100%;\
+    height: 600px;\
+    object-fit: cover;\
+    transition: var(--transition-smooth);\
+\}\
+\
+.about-image:hover img \{\
+    transform: scale(1.05);\
+\}\
+\
+.experience-badge \{\
+    position: absolute;\
+    bottom: 30px;\
+    right: 30px;\
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);\
+    width: 150px;\
+    height: 150px;\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    box-shadow: var(--shadow-gold);\
+    animation: pulse-badge 2s infinite;\
+\}\
+\
+@keyframes pulse-badge \{\
+    0%, 100% \{ transform: scale(1); \}\
+    50% \{ transform: scale(1.05); \}\
+\}\
+\
+.badge-content \{\
+    text-align: center;\
+    color: var(--white);\
+\}\
+\
+.badge-number \{\
+    font-size: 48px;\
+    font-weight: 700;\
+    display: block;\
+    font-family: var(--font-heading);\
+\}\
+\
+.badge-text \{\
+    font-size: 14px;\
+    display: block;\
+    line-height: 1.3;\
+\}\
+\
+.about-text h3 \{\
+    font-family: var(--font-heading);\
+    font-size: 36px;\
+    color: var(--secondary-color);\
+    margin-bottom: 25px;\
+\}\
+\
+.about-text p \{\
+    font-size: 16px;\
+    color: var(--text-light);\
+    margin-bottom: 20px;\
+    line-height: 1.8;\
+\}\
+\
+.about-features \{\
+    margin-top: 40px;\
+    display: flex;\
+    flex-direction: column;\
+    gap: 25px;\
+\}\
+\
+.feature-item \{\
+    display: flex;\
+    gap: 20px;\
+    align-items: flex-start;\
+\}\
+\
+.feature-icon \{\
+    width: 60px;\
+    height: 60px;\
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    flex-shrink: 0;\
+    box-shadow: var(--shadow-gold);\
+\}\
+\
+.feature-icon i \{\
+    color: var(--white);\
+    font-size: 24px;\
+\}\
+\
+.feature-text h4 \{\
+    font-size: 20px;\
+    color: var(--secondary-color);\
+    margin-bottom: 8px;\
+\}\
+\
+.feature-text p \{\
+    font-size: 14px;\
+    color: var(--text-light);\
+    margin: 0;\
+\}\
+\
+/* ========== SERVICES SECTION ========== */\
+.services \{\
+    background: var(--white);\
+\}\
+\
+.services-grid \{\
+    display: grid;\
+    grid-template-columns: repeat(3, 1fr);\
+    gap: 30px;\
+\}\
+\
+.service-card \{\
+    background: var(--white);\
+    border-radius: 20px;\
+    overflow: hidden;\
+    box-shadow: var(--shadow-medium);\
+    transition: var(--transition-smooth);\
+\}\
+\
+.service-card:hover \{\
+    transform: translateY(-10px);\
+    box-shadow: var(--shadow-heavy);\
+\}\
+\
+.service-image \{\
+    position: relative;\
+    height: 280px;\
+    overflow: hidden;\
+\}\
+\
+.service-image img \{\
+    width: 100%;\
+    height: 100%;\
+    object-fit: cover;\
+    transition: var(--transition-smooth);\
+\}\
+\
+.service-card:hover .service-image img \{\
+    transform: scale(1.1);\
+\}\
+\
+.service-overlay \{\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    background: linear-gradient(135deg, rgba(44,44,44,0.8) 0%, rgba(201,169,97,0.7) 100%);\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    opacity: 0;\
+    transition: var(--transition-smooth);\
+\}\
+\
+.service-card:hover .service-overlay \{\
+    opacity: 1;\
+\}\
+\
+.service-overlay i \{\
+    color: var(--white);\
+    font-size: 50px;\
+\}\
+\
+.service-content \{\
+    padding: 30px;\
+\}\
+\
+.service-content h3 \{\
+    font-family: var(--font-heading);\
+    font-size: 24px;\
+    color: var(--secondary-color);\
+    margin-bottom: 15px;\
+\}\
+\
+.service-content p \{\
+    font-size: 14px;\
+    color: var(--text-light);\
+    margin-bottom: 20px;\
+    line-height: 1.7;\
+\}\
+\
+.service-features \{\
+    list-style: none;\
+    margin-bottom: 25px;\
+\}\
+\
+.service-features li \{\
+    font-size: 14px;\
+    color: var(--text-light);\
+    margin-bottom: 10px;\
+    display: flex;\
+    align-items: center;\
+    gap: 10px;\
+\}\
+\
+.service-features i \{\
+    color: var(--primary-color);\
+    font-size: 12px;\
+\}\
+\
+.service-link \{\
+    color: var(--primary-color);\
+    text-decoration: none;\
+    font-weight: 600;\
+    font-size: 14px;\
+    display: inline-flex;\
+    align-items: center;\
+    gap: 8px;\
+    transition: var(--transition-smooth);\
+\}\
+\
+.service-link:hover \{\
+    gap: 15px;\
+\}\
+\
+/* ========== GALLERY SECTION ========== */\
+.gallery \{\
+    background: var(--light-bg);\
+\}\
+\
+.gallery-grid \{\
+    display: grid;\
+    grid-template-columns: repeat(4, 1fr);\
+    gap: 20px;\
+\}\
+\
+.gallery-item \{\
+    position: relative;\
+    height: 300px;\
+    border-radius: 15px;\
+    overflow: hidden;\
+    cursor: pointer;\
+    box-shadow: var(--shadow-medium);\
+\}\
+\
+.gallery-item img \{\
+    width: 100%;\
+    height: 100%;\
+    object-fit: cover;\
+    transition: var(--transition-smooth);\
+\}\
+\
+.gallery-overlay \{\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    background: rgba(201,169,97,0.9);\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    opacity: 0;\
+    transition: var(--transition-smooth);\
+\}\
+\
+.gallery-item:hover .gallery-overlay \{\
+    opacity: 1;\
+\}\
+\
+.gallery-item:hover img \{\
+    transform: scale(1.1);\
+\}\
+\
+.gallery-overlay i \{\
+    color: var(--white);\
+    font-size: 40px;\
+\}\
+\
+/* ========== TESTIMONIALS SECTION ========== */\
+.testimonials \{\
+    background: var(--white);\
+\}\
+\
+.testimonials-slider \{\
+    display: grid;\
+    grid-template-columns: repeat(3, 1fr);\
+    gap: 30px;\
+\}\
+\
+.testimonial-card \{\
+    background: var(--light-bg);\
+    padding: 40px;\
+    border-radius: 20px;\
+    box-shadow: var(--shadow-light);\
+    transition: var(--transition-smooth);\
+\}\
+\
+.testimonial-card:hover \{\
+    box-shadow: var(--shadow-medium);\
+    transform: translateY(-5px);\
+\}\
+\
+.stars \{\
+    margin-bottom: 20px;\
+\}\
+\
+.stars i \{\
+    color: var(--primary-color);\
+    font-size: 18px;\
+    margin-right: 5px;\
+\}\
+\
+.testimonial-text \{\
+    font-size: 16px;\
+    color: var(--text-dark);\
+    line-height: 1.8;\
+    margin-bottom: 25px;\
+    font-style: italic;\
+\}\
+\
+.author-info h4 \{\
+    font-size: 18px;\
+    color: var(--secondary-color);\
+    margin-bottom: 5px;\
+\}\
+\
+.author-info p \{\
+    font-size: 14px;\
+    color: var(--text-light);\
+\}\
+\
+/* ========== CONTACT SECTION ========== */\
+.contact \{\
+    background: var(--light-bg);\
+\}\
+\
+.contact-wrapper \{\
+    display: grid;\
+    grid-template-columns: 1fr 1fr;\
+    gap: 60px;\
+    margin-bottom: 60px;\
+\}\
+\
+.contact-info h3,\
+.contact-form-wrapper h3 \{\
+    font-family: var(--font-heading);\
+    font-size: 32px;\
+    color: var(--secondary-color);\
+    margin-bottom: 20px;\
+\}\
+\
+.contact-info p \{\
+    color: var(--text-light);\
+    margin-bottom: 30px;\
+\}\
+\
+.info-items \{\
+    display: flex;\
+    flex-direction: column;\
+    gap: 25px;\
+    margin-bottom: 40px;\
+\}\
+\
+.info-item \{\
+    display: flex;\
+    gap: 20px;\
+\}\
+\
+.info-icon \{\
+    width: 50px;\
+    height: 50px;\
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    flex-shrink: 0;\
+\}\
+\
+.info-icon i \{\
+    color: var(--white);\
+    font-size: 20px;\
+\}\
+\
+.info-content h4 \{\
+    font-size: 18px;\
+    color: var(--secondary-color);\
+    margin-bottom: 8px;\
+\}\
+\
+.info-content p,\
+.info-content a \{\
+    font-size: 14px;\
+    color: var(--text-light);\
+    text-decoration: none;\
+    line-height: 1.6;\
+\}\
+\
+.info-content a:hover \{\
+    color: var(--primary-color);\
+\}\
+\
+.social-links \{\
+    display: flex;\
+    gap: 15px;\
+\}\
+\
+.social-link \{\
+    width: 45px;\
+    height: 45px;\
+    background: var(--white);\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    color: var(--primary-color);\
+    font-size: 20px;\
+    transition: var(--transition-smooth);\
+    box-shadow: var(--shadow-light);\
+\}\
+\
+.social-link:hover \{\
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);\
+    color: var(--white);\
+    transform: translateY(-5px);\
+    box-shadow: var(--shadow-gold);\
+\}\
+\
+/* Contact Form */\
+.contact-form \{\
+    display: flex;\
+    flex-direction: column;\
+    gap: 20px;\
+\}\
+\
+.form-group \{\
+    position: relative;\
+\}\
+\
+.form-group input,\
+.form-group select,\
+.form-group textarea \{\
+    width: 100%;\
+    padding: 15px 20px;\
+    border: 2px solid var(--border-color);\
+    border-radius: 10px;\
+    font-family: var(--font-primary);\
+    font-size: 15px;\
+    transition: var(--transition-smooth);\
+    background: var(--white);\
+\}\
+\
+.form-group input:focus,\
+.form-group select:focus,\
+.form-group textarea:focus \{\
+    outline: none;\
+    border-color: var(--primary-color);\
+    box-shadow: 0 0 0 3px rgba(201,169,97,0.1);\
+\}\
+\
+.btn-submit \{\
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);\
+    color: var(--white);\
+    padding: 16px 40px;\
+    border: none;\
+    border-radius: 50px;\
+    font-size: 16px;\
+    font-weight: 600;\
+    cursor: pointer;\
+    transition: var(--transition-smooth);\
+    display: inline-flex;\
+    align-items: center;\
+    justify-content: center;\
+    gap: 10px;\
+\}\
+\
+.btn-submit:hover \{\
+    transform: translateY(-3px);\
+    box-shadow: 0 10px 30px rgba(37,211,102,0.3);\
+\}\
+\
+/* Map */\
+.map-container \{\
+    border-radius: 20px;\
+    overflow: hidden;\
+    box-shadow: var(--shadow-medium);\
+\}\
+\
+/* ========== FOOTER ========== */\
+.footer \{\
+    background: var(--secondary-color);\
+    color: var(--white);\
+    padding: 80px 0 30px;\
+\}\
+\
+.footer-content \{\
+    display: grid;\
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;\
+    gap: 40px;\
+    margin-bottom: 50px;\
+\}\
+\
+.footer-col h3 \{\
+    font-family: var(--font-heading);\
+    font-size: 24px;\
+    margin-bottom: 20px;\
+    color: var(--primary-color);\
+\}\
+\
+.footer-col h4 \{\
+    font-size: 18px;\
+    margin-bottom: 20px;\
+    color: var(--white);\
+\}\
+\
+.footer-col p \{\
+    color: rgba(255,255,255,0.7);\
+    line-height: 1.8;\
+    margin-bottom: 20px;\
+\}\
+\
+.footer-col ul \{\
+    list-style: none;\
+\}\
+\
+.footer-col ul li \{\
+    margin-bottom: 12px;\
+\}\
+\
+.footer-col ul li a \{\
+    color: rgba(255,255,255,0.7);\
+    text-decoration: none;\
+    transition: var(--transition-smooth);\
+    display: flex;\
+    align-items: center;\
+    gap: 10px;\
+\}\
+\
+.footer-col ul li a:hover \{\
+    color: var(--primary-color);\
+    padding-left: 5px;\
+\}\
+\
+.footer-contact li \{\
+    display: flex;\
+    align-items: flex-start;\
+    gap: 10px;\
+    color: rgba(255,255,255,0.7);\
+    margin-bottom: 15px;\
+\}\
+\
+.footer-contact i \{\
+    color: var(--primary-color);\
+    margin-top: 3px;\
+\}\
+\
+.footer-social \{\
+    display: flex;\
+    gap: 12px;\
+\}\
+\
+.footer-social a \{\
+    width: 40px;\
+    height: 40px;\
+    background: rgba(255,255,255,0.1);\
+    border-radius: 50%;\
+    display: flex;\
+    align-items: center;\
+    justify-content: center;\
+    color: var(--white);\
+    transition: var(--transition-smooth);\
+\}\
+\
+.footer-social a:hover \{\
+    background: var(--primary-color);\
+    transform: translateY(-5px);\
+\}\
+\
+.footer-bottom \{\
+    border-top: 1px solid rgba(255,255,255,0.1);\
+    padding-top: 30px;\
+    text-align: center;\
+\}\
+\
+.footer-bottom p \{\
+    color: rgba(255,255,255,0.6);\
+    font-size: 14px;\
+\}\
+\
+.footer-bottom i \{\
+    color: var(--primary-color);\
+\}\
+\
+/* ========== RESPONSIVE DESIGN ========== */\
+\
+/* Tablet */\
+@media (max-width: 992px) \{\
+    .nav-menu \{\
+        position: fixed;\
+        top: 0;\
+        right: -100%;\
+        width: 300px;\
+        height: 100vh;\
+        background: var(--white);\
+        flex-direction: column;\
+        padding: 100px 40px 40px;\
+        box-shadow: -5px 0 20px rgba(0,0,0,0.1);\
+        transition: var(--transition-smooth);\
+    \}\
+\
+    .nav-menu.active \{\
+        right: 0;\
+    \}\
+\
+    .nav-links \{\
+        flex-direction: column;\
+        gap: 25px;\
+    \}\
+\
+    .hamburger \{\
+        display: flex;\
+    \}\
+\
+    .hero-title \{\
+        font-size: 50px;\
+    \}\
+\
+    .about-content,\
+    .contact-wrapper \{\
+        grid-template-columns: 1fr;\
+        gap: 40px;\
+    \}\
+\
+    .services-grid \{\
+        grid-template-columns: repeat(2, 1fr);\
+    \}\
+\
+    .gallery-grid \{\
+        grid-template-columns: repeat(3, 1fr);\
+    \}\
+\
+    .testimonials-slider \{\
+        grid-template-columns: 1fr;\
+    \}\
+\
+    .footer-content \{\
+        grid-template-columns: repeat(2, 1fr);\
+    \}\
+\}\
+\
+/* Mobile */\
+@media (max-width: 768px) \{\
+    :root \{\
+        --section-padding: 60px 0;\
+    \}\
+\
+    .hero \{\
+        height: 100vh;\
+        min-height: 600px;\
+    \}\
+\
+    .hero-title \{\
+        font-size: 36px;\
+    \}\
+\
+    .hero-subtitle \{\
+        font-size: 16px;\
+    \}\
+\
+    .hero-buttons \{\
+        flex-direction: column;\
+    \}\
+\
+    .section-title \{\
+        font-size: 32px;\
+    \}\
+\
+    .services-grid \{\
+        grid-template-columns: 1fr;\
+    \}\
+\
+    .gallery-grid \{\
+        grid-template-columns: repeat(2, 1fr);\
+    \}\
+\
+    .footer-content \{\
+        grid-template-columns: 1fr;\
+    \}\
+\
+    .whatsapp-float \{\
+        width: 50px;\
+        height: 50px;\
+        font-size: 24px;\
+        bottom: 20px;\
+        right: 20px;\
+    \}\
+\}\
+\
+@media (max-width: 480px) \{\
+    .logo h1 \{\
+        font-size: 22px;\
+    \}\
+\
+    .hero-title \{\
+        font-size: 28px;\
+    \}\
+\
+    .gallery-grid \{\
+        grid-template-columns: 1fr;\
+    \}\
+\
+    .gallery-item \{\
+        height: 250px;\
+    \}\
+\}\
+\
+/* ========== UTILITY CLASSES ========== */\
+.text-center \{\
+    text-align: center;\
+\}\
+\
+.mt-1 \{ margin-top: 10px; \}\
+.mt-2 \{ margin-top: 20px; \}\
+.mt-3 \{ margin-top: 30px; \}\
+.mb-1 \{ margin-bottom: 10px; \}\
+.mb-2 \{ margin-bottom: 20px; \}\
+.mb-3 \{ margin-bottom: 30px; \}\
+\
+/* ========== PRINT STYLES ========== */\
+@media print \{\
+    .navbar,\
+    .whatsapp-float,\
+    .scroll-indicator,\
+    .btn-primary,\
+    .btn-hero \{\
+        display: none;\
+    \}\
+\}}
