@@ -74,15 +74,18 @@ document.getElementById('bookingForm').addEventListener('submit', e => {
 // Min date
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-// Hero Swiper
+// ===== HERO SWIPER (6 IMAGES - 1 SEC AUTOPLAY) =====
 window.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (window.Swiper) {
     new Swiper('.hero-swiper', {
       loop: true,
       effect: 'fade',
-      speed: 1200,
-      autoplay: reduceMotion ? false : { delay: 4200, disableOnInteraction: false },
+      speed: 800,
+      autoplay: reduceMotion ? false : { 
+        delay: 1000,  // 1 second
+        disableOnInteraction: false 
+      },
       allowTouchMove: true,
       grabCursor: true,
       keyboard: { enabled: true },
@@ -91,7 +94,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // GSAP TEXT ANIMATION (Letter-by-letter reveal on scroll)
+  // ===== GSAP TEXT ANIMATION (Letter-by-letter reveal) =====
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
     
@@ -115,9 +118,37 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // ===== IMAGE SLIDE-IN ANIMATION (out-of-screen) =====
+  const slideInObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.slide-in-img').forEach(img => {
+    slideInObserver.observe(img);
+  });
+
+  // ===== FOOTER SHAKE ON SCROLL =====
+  const footerTexts = document.querySelectorAll('.footer-text, .footer-link');
+  const footerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'shakeFooter 0.4s ease-in-out';
+        setTimeout(() => {
+          entry.target.style.animation = '';
+        }, 400);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  footerTexts.forEach(el => footerObserver.observe(el));
 });
 
-// SPARKLE PARTICLES (Canvas - Crystal Luxury Effect)
+// ===== SPARKLE PARTICLES (Canvas - Crystal Luxury Effect) =====
 const canvas = document.getElementById('sparkleCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
