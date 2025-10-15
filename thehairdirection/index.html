@@ -4,33 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>The Hair Direction Salon — Premium Hair & Beauty Studio | Kamla Nagar, Delhi</title>
-  <meta name="description" content="The Hair Direction Salon — Premium haircuts, color, hair spa & bridal glam in Kamla Nagar, Delhi. Book your appointment via WhatsApp."/>
+  <meta name="description" content="The Hair Direction Salon — Premium haircuts, color, hair spa & bridal glam in Kamla Nagar, Delhi."/>
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#A8D8EA">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%23A8D8EA'/%3E%3Ctext x='50%25' y='58%25' font-family='Arial, sans-serif' font-weight='700' font-size='56' text-anchor='middle' fill='%23FFFFFF'%3ETHD%3C/text%3E%3C/svg%3E">
 
-  <!-- Preload first hero image -->
-  <link rel="preload" as="image" href="">
-
-  <!-- Fonts (Luxury) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- AOS + Swiper -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css">
-
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Sparkle particles canvas -->
   <canvas id="sparkleCanvas" aria-hidden="true"></canvas>
+
+  <!-- ADMIN LINK (Hidden - Only for you) -->
+  <a href="admin.html" style="position:fixed; bottom:160px; right:20px; z-index:999; opacity:0.1; transition:opacity 0.3s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.1'" aria-label="Admin Panel">
+    <i class="fas fa-cog" style="font-size:2rem; color:#A8D8EA"></i>
+  </a>
 
   <!-- NAVIGATION -->
   <nav class="navbar" id="navbar">
@@ -51,67 +46,29 @@
         <li class="menu-item"><a href="#location">Location</a></li>
         <li class="menu-item"><a href="#booking" class="btn">Book Now</a></li>
       </ul>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
         <i class="fas fa-bars"></i>
       </button>
     </div>
   </nav>
 
-  <!-- HERO LUXURY (6 HD IMAGES - 1 SEC AUTOPLAY) -->
+  <!-- HERO (DYNAMIC) -->
   <section class="hero luxury-hero" id="home">
-    <!-- Background slider -->
-    <div class="hero-swiper swiper" aria-label="Luxury salon showcase">
-      <div class="swiper-wrapper">
-        <!-- Image 1: Interior (golden hour) -->
-        <div class="swiper-slide">
-          <div class="slide-media">
-            <img src="https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Luxurious salon interior golden hour">
-          </div>
-        </div>
-        <!-- Image 2: Blow-dry glamour -->
-        <div class="swiper-slide">
-          <div class="slide-media">
-            <img src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg" alt="Glamorous blow-dry styling">
-          </div>
-        </div>
-        <!-- Image 3: Bridal elegance -->
-        <div class="swiper-slide">
-          <div class="slide-media">
-            <img src="https://i.ibb.co/wh3MRWvb/photo-1610047614301-13c63f00c032-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Bridal hair & makeup elegance">
-          </div>
-        </div>
-        <!-- Image 4: Hair spa relaxation -->
-        <div class="swiper-slide">
-          <div class="slide-media">
-            <img src="https://i.ibb.co/spMFwTC2/photo-1580618672591-eb180b1a973f-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTUw-NTcyf-A-ix.jpg" alt="Relaxing hair spa treatment">
-          </div>
-        </div>
-        <!-- Image 5: Color highlights -->
-        <div class="swiper-slide">
-          <div class="slide-media">
-            <img src="https://i.ibb.co/wFS419MP/photo-1717160675489-7779f2c91999-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Hair color and highlights">
-          </div>
-        </div>
-        <!-- Image 6: Men's grooming -->
-        <div class="swiper-slide">
-          <div class="slide-media">
-            <img src="https://i.ibb.co/8DzkwzXW/photo-1481068164146-e8beb686f4d2-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Men's grooming services">
-          </div>
-        </div>
+    <div class="hero-swiper swiper" id="heroSwiper">
+      <div class="swiper-wrapper" id="heroSlidesContainer">
+        <!-- Dynamic slides loaded by JS -->
       </div>
-      <div class="hero-layer hero-gradient"></div>
-      <div class="hero-layer hero-vignette"></div>
+      <!-- Transparent overlay (removed white) -->
       <div class="hero-pagination swiper-pagination"></div>
       <button class="hero-nav hero-prev" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
       <button class="hero-nav hero-next" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <!-- Content -->
     <div class="hero-content-wrap">
       <div class="hero-content">
-        <span class="eyebrow split-text" data-split>Premium Salon & Spa • Kamla Nagar</span>
-        <h1 class="split-text" data-split>Luxury Hair. Timeless Glow.</h1>
-        <p class="split-text" data-split>Signature haircuts, couture colour, spa rituals & bridal glam — crafted for confidence.</p>
+        <span class="eyebrow split-text" data-split id="heroEyebrow">Premium Salon & Spa • Kamla Nagar</span>
+        <h1 class="split-text" data-split id="heroTitle">Luxury Hair. Timeless Glow.</h1>
+        <p class="split-text" data-split id="heroDesc">Signature haircuts, couture colour, spa rituals & bridal glam — crafted for confidence.</p>
         <div class="hero-ctas">
           <a href="#booking" class="btn pearl-btn"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
           <a href="#services" class="btn btn-outline-pearl">Explore Services</a>
@@ -126,19 +83,19 @@
     <div class="scroll-hint"><span class="dot"></span> Scroll</div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ABOUT (DYNAMIC) -->
   <section class="about" id="about">
     <div class="container">
       <div class="about-wrapper">
-        <div class="about-img" data-aos="fade-right" data-aos-duration="900">
-          <img loading="lazy" src="https://i.ibb.co/hz8Z0Hq/premium-photo-1661438191430-656b51362d7a-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Interior">
+        <div class="about-img" data-aos="fade-right">
+          <img loading="lazy" id="aboutImage" src="" alt="Interior">
           <div class="about-badge shimmer-border"><span class="num">10+</span><span>Years</span></div>
         </div>
         <div class="about-text">
-          <h3 data-aos="fade-left" class="split-text" data-split>Our Craft</h3>
-          <h2 data-aos="fade-left" class="split-text" data-split>PREMIUM HAIR IN KAMLA NAGAR</h2>
-          <p data-aos="fade-left" class="split-text" data-split>The Hair Direction Salon delivers luxury haircuts, expert color, relaxing hair spa and bridal glam — with state-of-the-art techniques and timeless artistry.</p>
-          <p data-aos="fade-left" class="split-text" data-split>Visit us in the heart of Kamla Nagar, Delhi for precision styling and memorable experiences.</p>
+          <h3 data-aos="fade-left" class="split-text" data-split id="aboutSubtitle">Our Craft</h3>
+          <h2 data-aos="fade-left" class="split-text" data-split id="aboutTitle">PREMIUM HAIR IN KAMLA NAGAR</h2>
+          <p data-aos="fade-left" class="split-text" data-split id="aboutDesc1">The Hair Direction Salon delivers luxury haircuts...</p>
+          <p data-aos="fade-left" class="split-text" data-split id="aboutDesc2">Visit us in the heart of Kamla Nagar, Delhi...</p>
           <div class="stats">
             <div class="stat shimmer-card" data-aos="zoom-in"><i class="fas fa-award"></i><span class="num">10+</span><span class="label">Years Excellence</span></div>
             <div class="stat shimmer-card" data-aos="zoom-in"><i class="fas fa-users"></i><span class="num">5K+</span><span class="label">Happy Clients</span></div>
@@ -150,80 +107,44 @@
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- SERVICES (DYNAMIC) -->
   <section class="services" id="services">
     <div class="container">
       <div class="section-header">
-        <div class="section-subtitle split-text" data-split data-aos="fade-down">What We Offer</div>
-        <h2 class="split-text" data-split data-aos="fade-up">OUR SERVICES</h2>
-        <p class="split-text" data-split data-aos="fade-up">Premium hair services crafted with precision and care</p>
+        <div class="section-subtitle split-text" data-split>What We Offer</div>
+        <h2 class="split-text" data-split>OUR SERVICES</h2>
+        <p class="split-text" data-split>Premium hair services crafted with precision and care</p>
       </div>
-      <div class="services-grid">
-        <!-- Service 1: Haircut & Styling -->
-        <div class="service-card pearl-card slide-in-img" data-direction="left">
-          <img loading="lazy" src="https://i.ibb.co/C5YDRSLB/photo-1695527081848-1e46c06e6458-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Haircut">
-          <div class="service-info"><div class="icon">✂️</div><h3 class="split-text" data-split>Haircut & Styling</h3><p>Precision cuts, layers, fringe and signature blow-dry finishes.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
-        </div>
-        <!-- Service 2: Hair Wash & Spa -->
-        <div class="service-card pearl-card slide-in-img" data-direction="bottom">
-          <img loading="lazy" src="https://i.ibb.co/xtjBpSvv/photo-1554519934-e32b1629d9ee-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ixlib.jpg" alt="Spa">
-          <div class="service-info"><div class="icon">💆</div><h3 class="split-text" data-split>Hair Wash & Spa</h3><p>Relaxing scalp rituals and deep-nourish spa for shine and health.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
-        </div>
-        <!-- Service 3: Colour & Highlights -->
-        <div class="service-card pearl-card slide-in-img" data-direction="right">
-          <img loading="lazy" src="https://i.ibb.co/wFS419MP/photo-1717160675489-7779f2c91999-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Color">
-          <div class="service-info"><div class="icon">🎨</div><h3 class="split-text" data-split>Colour & Highlights</h3><p>Balayage, global color, highlights and gloss toning.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
-        </div>
-        <!-- Service 4: Blow Dry & Finishing -->
-        <div class="service-card pearl-card slide-in-img" data-direction="left">
-          <img loading="lazy" src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg" alt="Blow Dry">
-          <div class="service-info"><div class="icon">✨</div><h3 class="split-text" data-split>Blow Dry & Finishing</h3><p>Smooth, bouncy or glam waves — long-lasting finish.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
-        </div>
-        <!-- Service 5: Bridal Hair & Makeup -->
-        <div class="service-card pearl-card slide-in-img" data-direction="bottom">
-          <img loading="lazy" src="https://i.ibb.co/wh3MRWvb/photo-1610047614301-13c63f00c032-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Bridal">
-          <div class="service-info"><div class="icon">👰</div><h3 class="split-text" data-split>Bridal Hair & Makeup</h3><p>Classic to contemporary bridal looks.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
-        </div>
-        <!-- Service 6: Men's Grooming -->
-        <div class="service-card pearl-card slide-in-img" data-direction="right">
-          <img loading="lazy" src="https://i.ibb.co/8DzkwzXW/photo-1481068164146-e8beb686f4d2-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Men">
-          <div class="service-info"><div class="icon">🧔</div><h3 class="split-text" data-split>Men's Grooming</h3><p>Clean fades, texture, beard shaping.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
-        </div>
+      <div class="services-grid" id="servicesContainer">
+        <!-- Dynamic services loaded by JS -->
       </div>
     </div>
   </section>
 
-  <!-- GALLERY -->
+  <!-- GALLERY (DYNAMIC) -->
   <section class="gallery" id="gallery">
     <div class="container">
       <div class="section-header">
-        <div class="section-subtitle split-text" data-split data-aos="fade-down">Our Space & Work</div>
-        <h2 class="split-text" data-split data-aos="fade-up">GALLERY</h2>
-        <p class="split-text" data-split data-aos="fade-up">Experience luxury finishes and premium ambience.</p>
+        <div class="section-subtitle split-text" data-split>Our Space & Work</div>
+        <h2 class="split-text" data-split>GALLERY</h2>
+        <p class="split-text" data-split>Experience luxury finishes and premium ambience.</p>
       </div>
-      <div class="gallery-grid">
-        <div class="gallery-item pearl-card slide-in-img" data-direction="left"><img loading="lazy" src="https://i.ibb.co/SX5ySpJK/premium-photo-1664537434872-db1649ce689f-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Styling"><div class="gallery-text"><h3>Signature Styling</h3><p>Precision & Finish</p></div></div>
-        <div class="gallery-item pearl-card slide-in-img" data-direction="top"><img loading="lazy" src="https://i.ibb.co/hz8Z0Hq/premium-photo-1661438191430-656b51362d7a-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Ambience"><div class="gallery-text"><h3>Modern Ambience</h3><p>Comfort & Luxury</p></div></div>
-        <div class="gallery-item pearl-card slide-in-img" data-direction="right"><img loading="lazy" src="https://i.ibb.co/spMFwTC2/photo-1580618672591-eb180b1a973f-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTUw-NTcyf-A-ix.jpg" alt="Spa"><div class="gallery-text"><h3>Hair Spa</h3><p>Relax & Repair</p></div></div>
-        <div class="gallery-item pearl-card slide-in-img" data-direction="left"><img loading="lazy" src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg" alt="Blow Dry"><div class="gallery-text"><h3>Blow Dry</h3><p>Smooth & Bouncy</p></div></div>
-        <div class="gallery-item pearl-card slide-in-img" data-direction="bottom"><img loading="lazy" src="https://i.ibb.co/k6MNfjWT/photo-1610047614256-023d7c028d0b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Bridal"><div class="gallery-text"><h3>Bridal Glam</h3><p>Traditional & Modern</p></div></div>
-        <div class="gallery-item pearl-card slide-in-img" data-direction="right"><img loading="lazy" src="https://i.ibb.co/WW4BTgzf/premium-photo-1676677522880-639b99b1f27b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Studio"><div class="gallery-text"><h3>Studio Moments</h3><p>Flawless Finish</p></div></div>
+      <div class="gallery-grid" id="galleryContainer">
+        <!-- Dynamic gallery loaded by JS -->
       </div>
     </div>
   </section>
 
-  <!-- REVIEWS -->
+  <!-- REVIEWS (DYNAMIC) -->
   <section class="reviews" id="reviews">
     <div class="container">
       <div class="section-header">
-        <div class="section-subtitle split-text" data-split data-aos="fade-down">Testimonials</div>
-        <h2 class="split-text" data-split data-aos="fade-up">CLIENT REVIEWS</h2>
-        <p class="split-text" data-split data-aos="fade-up">What our clients love about us</p>
+        <div class="section-subtitle split-text" data-split>Testimonials</div>
+        <h2 class="split-text" data-split>CLIENT REVIEWS</h2>
+        <p class="split-text" data-split>What our clients love about us</p>
       </div>
-      <div class="reviews-grid">
-        <div class="review-card pearl-card" data-aos="fade-right"><i class="fas fa-quote-left quote"></i><div class="stars">★★★★★</div><p class="review-text">"Superb haircut and styling. The finish is always on point!"</p><div class="review-author"><img src="https://i.pravatar.cc/150?img=12" alt="Client"><div><h4>Arnav</h4><p>Haircut & Styling</p></div></div></div>
-        <div class="review-card pearl-card" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-quote-left quote"></i><div class="stars">★★★★★</div><p class="review-text">"My balayage turned out gorgeous — perfect tone and shine."</p><div class="review-author"><img src="https://i.pravatar.cc/150?img=23" alt="Client"><div><h4>Prerna</h4><p>Colour & Highlights</p></div></div></div>
-        <div class="review-card pearl-card" data-aos="fade-left" data-aos-delay="200"><i class="fas fa-quote-left quote"></i><div class="stars">★★★★★</div><p class="review-text">"Relaxing hair spa and amazing blowout. Highly recommended!"</p><div class="review-author"><img src="https://i.pravatar.cc/150?img=33" alt="Client"><div><h4>Simran</h4><p>Hair Spa & Blow Dry</p></div></div></div>
+      <div class="reviews-grid" id="reviewsContainer">
+        <!-- Dynamic reviews loaded by JS -->
       </div>
     </div>
   </section>
@@ -232,21 +153,24 @@
   <section class="location" id="location">
     <div class="container">
       <div class="section-header">
-        <div class="section-subtitle split-text" data-split data-aos="fade-down">Find Us</div>
-        <h2 class="split-text" data-split data-aos="fade-up">VISIT OUR SALON</h2>
-        <p class="split-text" data-split data-aos="fade-up">Experience luxury in Kamla Nagar, Delhi</p>
+        <div class="section-subtitle split-text" data-split>Find Us</div>
+        <h2 class="split-text" data-split>VISIT OUR SALON</h2>
+        <p class="split-text" data-split>Experience luxury in Kamla Nagar, Delhi</p>
       </div>
-      <div class="location-card pearl-card" data-aos="zoom-in">
-        <div class="location-img"><img loading="lazy" src="https://i.ibb.co/BK6WNMqF/photo-1631549423660-c10874dc335f-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTUx-MDY0f-A-ix.jpg" alt="Front"><div class="location-name">KAMLA NAGAR, DELHI</div></div>
+      <div class="location-card pearl-card">
+        <div class="location-img">
+          <img loading="lazy" src="https://images.pexels.com/photos/1319460/pexels-photo-1319460.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Front">
+          <div class="location-name">KAMLA NAGAR, DELHI</div>
+        </div>
         <div class="location-details">
-          <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><h4>Address</h4><p>44ub, Chattori Lane, Block UB, Jawahar Nagar, Kamla Nagar, Delhi, 110007</p><a href="https://maps.app.goo.gl/eg7TV7ztLXkirimS6" target="_blank" rel="noopener">Open in Google Maps →</a></div></div>
-          <div class="info-item"><i class="fas fa-phone"></i><div><h4>Phone / WhatsApp</h4><a href="tel:+917503135104">+91 7503135104</a> · <a href="https://wa.me/917503135104" target="_blank" rel="noopener">Chat</a></div></div>
+          <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><h4>Address</h4><p>44ub, Chattori Lane, Block UB, Jawahar Nagar, Kamla Nagar, Delhi, 110007</p><a href="https://maps.app.goo.gl/eg7TV7ztLXkirimS6" target="_blank">Open in Google Maps →</a></div></div>
+          <div class="info-item"><i class="fas fa-phone"></i><div><h4>Phone / WhatsApp</h4><a href="tel:+917503135104">+91 7503135104</a> · <a href="https://wa.me/917503135104" target="_blank">Chat</a></div></div>
           <div class="info-item"><i class="fas fa-envelope"></i><div><h4>Email</h4><a href="mailto:prabhatlal1997@gmail.com">prabhatlal1997@gmail.com</a></div></div>
-          <div class="info-item"><i class="fab fa-instagram"></i><div><h4>Follow Us</h4><a href="https://www.instagram.com/the_hair_direction_salon?utm_source=ig_web_button_share_sheet&igsh=NGFiZGgxZTVwb2Fs" target="_blank" rel="noopener">@the_hair_direction_salon</a><br><a href="https://www.facebook.com/thehairdirectionsalon/" target="_blank" rel="noopener">Facebook</a></div></div>
+          <div class="info-item"><i class="fab fa-instagram"></i><div><h4>Follow Us</h4><a href="https://www.instagram.com/the_hair_direction_salon" target="_blank">@the_hair_direction_salon</a><br><a href="https://www.facebook.com/thehairdirectionsalon/" target="_blank">Facebook</a></div></div>
           <a href="#booking" class="btn pearl-btn" style="width:100%; text-align:center; margin-top:30px;">Book Appointment</a>
         </div>
       </div>
-      <div class="map" data-aos="fade-up"><iframe title="Location" src="https://www.google.com/maps?q=44ub,+Chattori+Lane,+Block+UB,+Jawahar+Nagar,+Kamla+Nagar,+Delhi,+110007&output=embed" allowfullscreen loading="lazy"></iframe></div>
+      <div class="map"><iframe title="Location" src="https://www.google.com/maps?q=44ub,+Chattori+Lane,+Block+UB,+Jawahar+Nagar,+Kamla+Nagar,+Delhi,+110007&output=embed" allowfullscreen loading="lazy"></iframe></div>
     </div>
   </section>
 
@@ -254,17 +178,17 @@
   <section class="booking" id="booking">
     <div class="container">
       <div class="section-header">
-        <div class="section-subtitle split-text" data-split data-aos="fade-down">Reserve Now</div>
-        <h2 class="split-text" data-split data-aos="fade-up">BOOK APPOINTMENT</h2>
-        <p class="split-text" data-split data-aos="fade-up">Book via WhatsApp — instant, easy, fast</p>
+        <div class="section-subtitle split-text" data-split>Reserve Now</div>
+        <h2 class="split-text" data-split>BOOK APPOINTMENT</h2>
+        <p class="split-text" data-split>Book via WhatsApp — instant, easy, fast</p>
       </div>
-      <form class="booking-form pearl-card" id="bookingForm" data-aos="zoom-in">
+      <form class="booking-form pearl-card" id="bookingForm">
         <div class="form-row">
           <div class="form-group"><label for="name">Full Name *</label><input type="text" id="name" autocomplete="name" required placeholder="Enter your name"></div>
           <div class="form-group"><label for="email">Email *</label><input type="email" id="email" autocomplete="email" required placeholder="Enter your email"></div>
         </div>
-        <div class="form-group"><label for="phone">WhatsApp Number *</label><input type="tel" id="phone" inputmode="tel" autocomplete="tel" required placeholder="Your WhatsApp number"></div>
-        <div class="form-group"><label for="service">Select Service *</label><select id="service" required><option value="">Choose a service</option><option>Haircut & Styling</option><option>Hair Wash & Spa</option><option>Colour & Highlights</option><option>Blow Dry & Finishing</option><option>Bridal Hair & Makeup</option><option>Men's Grooming</option></select></div>
+        <div class="form-group"><label for="phone">WhatsApp Number *</label><input type="tel" id="phone" inputmode="tel" required placeholder="Your WhatsApp number"></div>
+        <div class="form-group"><label for="service">Select Service *</label><select id="service" required><option value="">Choose a service</option></select></div>
         <div class="form-row">
           <div class="form-group"><label for="date">Preferred Date *</label><input type="date" id="date" required></div>
           <div class="form-group"><label for="time">Preferred Time *</label><select id="time" required><option value="">Select time</option><option>09:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>01:00 PM</option><option>02:00 PM</option><option>03:00 PM</option><option>04:00 PM</option><option>05:00 PM</option><option>06:00 PM</option><option>07:00 PM</option><option>08:00 PM</option></select></div>
@@ -283,20 +207,15 @@
         <p class="footer-text">Premium hair salon for cuts, color, spa and bridal glam in Kamla Nagar, Delhi.</p>
         <p class="footer-text" style="margin-top:10px">Built by <a href="https://hanunova.oneapp.dev/" target="_blank" style="color:#A8D8EA; text-decoration:none;">HanuNova</a></p>
         <div class="social">
-          <a href="https://www.instagram.com/the_hair_direction_salon?utm_source=ig_web_button_share_sheet&igsh=NGFiZGgxZTVwb2Fs" target="_blank" class="footer-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/thehairdirectionsalon/" target="_blank" class="footer-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://wa.me/917503135104" target="_blank" class="footer-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/the_hair_direction_salon" target="_blank" class="footer-link"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/thehairdirectionsalon/" target="_blank" class="footer-link"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/917503135104" target="_blank" class="footer-link"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
       <div>
         <h3 class="footer-text">Services</h3>
-        <ul>
-          <li><a href="#services" class="footer-link">Haircut & Styling</a></li>
-          <li><a href="#services" class="footer-link">Hair Wash & Spa</a></li>
-          <li><a href="#services" class="footer-link">Colour & Highlights</a></li>
-          <li><a href="#services" class="footer-link">Blow Dry & Finishing</a></li>
-          <li><a href="#services" class="footer-link">Bridal Hair & Makeup</a></li>
-          <li><a href="#services" class="footer-link">Men's Grooming</a></li>
+        <ul id="footerServicesLinks">
+          <!-- Dynamic -->
         </ul>
       </div>
       <div>
@@ -312,24 +231,22 @@
       <div>
         <h3 class="footer-text">Contact</h3>
         <p class="footer-text">44ub, Chattori Lane, Block UB,<br>Jawahar Nagar, Kamla Nagar,<br>Delhi, 110007</p>
-        <p class="footer-text"><a href="tel:+917503135104" class="footer-link" style="color:inherit; text-decoration:none;">+91 7503135104</a></p>
-        <p class="footer-text"><a href="mailto:prabhatlal1997@gmail.com" class="footer-link" style="color:inherit; text-decoration:none;">prabhatlal1997@gmail.com</a></p>
+        <p class="footer-text"><a href="tel:+917503135104" class="footer-link">+91 7503135104</a></p>
+        <p class="footer-text"><a href="mailto:prabhatlal1997@gmail.com" class="footer-link">prabhatlal1997@gmail.com</a></p>
       </div>
     </div>
     <div class="footer-bottom"><p>&copy; <span id="year"></span> The Hair Direction Salon. All Rights Reserved.</p></div>
   </footer>
 
-  <!-- WHATSAPP FLOAT -->
-  <button class="whatsapp-btn" onclick="window.open('https://wa.me/917503135104?text=Hi%20The%20Hair%20Direction%20Salon!', '_blank')" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></button>
-
-  <!-- SCROLL TO TOP -->
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+  <button class="whatsapp-btn" onclick="window.open('https://wa.me/917503135104?text=Hi%20The%20Hair%20Direction%20Salon!', '_blank')"><i class="fab fa-whatsapp"></i></button>
+  <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
 
   <!-- Scripts -->
   <script defer src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
   <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="js/data.js"></script>
   <script defer src="js/main.js"></script>
 </body>
 </html>
