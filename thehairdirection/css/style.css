@@ -32,6 +32,102 @@ img{max-width:100%;display:block}
   position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.6;
 }
 
+/* ===== LOGO FALLING ANIMATION (ऊपर से गिरते letters) ===== */
+.logo{
+  font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:700; 
+  text-decoration:none; letter-spacing:4px; transition:.3s; display:inline-block;
+}
+.logo-char, .logo-space{
+  display:inline-block; 
+  background:linear-gradient(135deg, var(--crystal-deep), var(--gold-accent));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  opacity:0; transform:translateY(-100px) rotate(-10deg);
+  animation:fallLetter 0.8s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+.logo-space{width:0.3em}
+.logo-char:nth-child(1){animation-delay:0.05s}
+.logo-char:nth-child(2){animation-delay:0.1s}
+.logo-char:nth-child(3){animation-delay:0.15s}
+.logo-char:nth-child(5){animation-delay:0.2s}
+.logo-char:nth-child(6){animation-delay:0.25s}
+.logo-char:nth-child(7){animation-delay:0.3s}
+.logo-char:nth-child(8){animation-delay:0.35s}
+.logo-char:nth-child(10){animation-delay:0.4s}
+.logo-char:nth-child(11){animation-delay:0.45s}
+.logo-char:nth-child(12){animation-delay:0.5s}
+.logo-char:nth-child(13){animation-delay:0.55s}
+.logo-char:nth-child(14){animation-delay:0.6s}
+.logo-char:nth-child(15){animation-delay:0.65s}
+.logo-char:nth-child(16){animation-delay:0.7s}
+.logo-char:nth-child(17){animation-delay:0.75s}
+.logo-char:nth-child(18){animation-delay:0.8s}
+
+@keyframes fallLetter{
+  0%{opacity:0; transform:translateY(-100px) rotate(-10deg)}
+  60%{transform:translateY(10px) rotate(2deg)}
+  80%{transform:translateY(-5px) rotate(-1deg)}
+  100%{opacity:1; transform:translateY(0) rotate(0)}
+}
+
+/* ===== MENU SHAKE EFFECT (hover पर) ===== */
+.menu-item{
+  transition:transform .3s ease;
+}
+.menu-item:hover{
+  animation:shakeMenu 0.5s ease-in-out;
+}
+@keyframes shakeMenu{
+  0%, 100%{transform:translateX(0)}
+  25%{transform:translateX(-5px) rotate(-2deg)}
+  50%{transform:translateX(5px) rotate(2deg)}
+  75%{transform:translateX(-3px) rotate(-1deg)}
+}
+
+/* ===== FOOTER SHAKE EFFECT (click/scroll पर) ===== */
+.footer-text, .footer-link{
+  transition:transform .3s ease;
+  cursor:pointer;
+}
+.footer-text:hover, .footer-link:hover{
+  animation:shakeFooter 0.4s ease-in-out;
+}
+@keyframes shakeFooter{
+  0%, 100%{transform:translateX(0)}
+  20%{transform:translateX(-4px) rotate(-1deg)}
+  40%{transform:translateX(4px) rotate(1deg)}
+  60%{transform:translateX(-3px)}
+  80%{transform:translateX(3px)}
+}
+
+/* ===== IMAGE SLIDE-IN ANIMATIONS (out-of-screen से आना) ===== */
+.slide-in-img{
+  opacity:0;
+  transition:all 0.8s cubic-bezier(.25,.46,.45,.94);
+}
+.slide-in-img[data-direction="left"]{transform:translateX(-100vw)}
+.slide-in-img[data-direction="right"]{transform:translateX(100vw)}
+.slide-in-img[data-direction="top"]{transform:translateY(-100vh)}
+.slide-in-img[data-direction="bottom"]{transform:translateY(100vh)}
+
+.slide-in-img.visible{
+  opacity:1;
+  transform:translate(0, 0);
+}
+
+/* ===== IMAGE HOVER SHAKE (smooth movement) ===== */
+.slide-in-img img{
+  transition:transform .3s ease;
+}
+.slide-in-img:hover img{
+  animation:shakeImage 0.6s ease-in-out infinite;
+}
+@keyframes shakeImage{
+  0%, 100%{transform:translate(0, 0) rotate(0)}
+  25%{transform:translate(-3px, -3px) rotate(-1deg)}
+  50%{transform:translate(3px, 3px) rotate(1deg)}
+  75%{transform:translate(-2px, 2px) rotate(-0.5deg)}
+}
+
 /* NAVIGATION */
 .navbar{
   position:fixed; width:100%; top:0; z-index:999;
@@ -43,13 +139,6 @@ img{max-width:100%;display:block}
 }
 .navbar.scrolled{padding:12px 0; box-shadow:0 6px 30px rgba(168,216,234,.3)}
 .nav-wrapper{max-width:1200px; margin:0 auto; padding:0 18px; display:flex; justify-content:space-between; align-items:center; gap:12px}
-.logo{
-  font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:700; 
-  background:linear-gradient(135deg, var(--crystal-deep), var(--gold-accent));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  text-decoration:none; letter-spacing:4px; transition:.3s;
-}
-.logo:hover{letter-spacing:6px}
 .nav-menu{display:flex; list-style:none; gap:20px; align-items:center}
 .nav-menu a{color:var(--crystal-deep); text-decoration:none; font-size:11px; text-transform:uppercase; letter-spacing:2px; font-weight:600; transition:.3s; position:relative}
 .nav-menu a::after{content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:var(--gold-accent); transition:.3s}
@@ -177,7 +266,7 @@ section{padding:80px 18px; position:relative; z-index:1}
 @keyframes shimmer{to{left:100%}}
 .shimmer-card:hover{transform:translateY(-6px); box-shadow:0 16px 40px rgba(168,216,234,.25); border-color:var(--crystal-blue)}
 
-/* PEARL CARD (for services/gallery/reviews) */
+/* PEARL CARD */
 .pearl-card{
   background:rgba(255,248,240,.98); border:2px solid rgba(168,216,234,.35); border-radius:18px; 
   overflow:hidden; transition:.3s; box-shadow:0 10px 30px rgba(168,216,234,.18); position:relative;
@@ -215,7 +304,6 @@ section{padding:80px 18px; position:relative; z-index:1}
 .services-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:18px}
 .service-card{position:relative; height:450px; overflow:hidden; transition:.3s}
 .service-card img{width:100%; height:100%; object-fit:cover; filter:brightness(1.05); transition:.5s}
-.service-card:hover img{transform:scale(1.08)}
 .service-info{
   position:absolute; bottom:0; left:0; right:0; 
   background:linear-gradient(transparent, rgba(255,248,240,.98)); padding:26px 18px;
@@ -229,7 +317,6 @@ section{padding:80px 18px; position:relative; z-index:1}
 .gallery-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px}
 .gallery-item{position:relative; height:380px; overflow:hidden; cursor:pointer; transition:.3s}
 .gallery-item img{width:100%; height:100%; object-fit:cover; transition:.5s; filter:brightness(1.05)}
-.gallery-item:hover img{transform:scale(1.08)}
 .gallery-text{
   position:absolute; bottom:0; left:0; right:0; 
   background:linear-gradient(transparent, rgba(168,216,234,.95)); padding:26px 18px; 
