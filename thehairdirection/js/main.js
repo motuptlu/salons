@@ -1,15 +1,15 @@
 // Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// AOS init
-AOS.init({ duration: 800, once: false, mirror: true, offset: 100, easing: 'ease-out' });
+// AOS
+AOS.init({ duration: 800, once: false, mirror: true, offset: 120, easing: 'ease-out' });
 
 // Mobile menu
 const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
 menuToggle.addEventListener('click', () => {
   const open = navMenu.classList.toggle('active');
-  menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  menuToggle.setAttribute('aria-expanded', open);
   const icon = menuToggle.querySelector('i');
   icon.classList.toggle('fa-bars');
   icon.classList.toggle('fa-times');
@@ -22,7 +22,7 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
   });
 });
 
-// Navbar scroll style
+// Navbar scroll
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 80) navbar.classList.add('scrolled');
@@ -71,18 +71,18 @@ document.getElementById('bookingForm').addEventListener('submit', e => {
   window.open(`https://wa.me/917503135104?text=${msg}`, '_blank');
 });
 
-// Set min date to today
+// Min date
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-// HERO Pro: Swiper fade slider (smooth + premium)
+// Hero Swiper
 window.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (window.Swiper) {
     new Swiper('.hero-swiper', {
       loop: true,
       effect: 'fade',
-      speed: 1100,
-      autoplay: reduceMotion ? false : { delay: 3800, disableOnInteraction: false },
+      speed: 1200,
+      autoplay: reduceMotion ? false : { delay: 4200, disableOnInteraction: false },
       allowTouchMove: true,
       grabCursor: true,
       keyboard: { enabled: true },
@@ -90,4 +90,80 @@ window.addEventListener('DOMContentLoaded', () => {
       navigation: { nextEl: '.hero-next', prevEl: '.hero-prev' }
     });
   }
+
+  // GSAP TEXT ANIMATION (Letter-by-letter reveal on scroll)
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    
+    document.querySelectorAll('.split-text[data-split]').forEach(el => {
+      const text = el.textContent;
+      el.innerHTML = text.split('').map(char => 
+        char === ' ' ? '<span class="char">&nbsp;</span>' : `<span class="char">${char}</span>`
+      ).join('');
+      
+      gsap.to(el.querySelectorAll('.char'), {
+        opacity: 1,
+        y: 0,
+        stagger: 0.025,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+  }
+});
+
+// SPARKLE PARTICLES (Canvas - Crystal Luxury Effect)
+const canvas = document.getElementById('sparkleCanvas');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+const particleCount = 60;
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.5;
+    this.speedY = (Math.random() - 0.5) * 0.5;
+    this.opacity = Math.random() * 0.5 + 0.2;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+    if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+  }
+  draw() {
+    ctx.fillStyle = `rgba(168, 216, 234, ${this.opacity})`;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity * 0.6})`;
+    ctx.beginPath();
+    ctx.arc(this.x + 1, this.y - 1, this.size * 0.5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
