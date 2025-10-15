@@ -11,10 +11,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%23A8D8EA'/%3E%3Ctext x='50%25' y='58%25' font-family='Arial, sans-serif' font-weight='700' font-size='56' text-anchor='middle' fill='%23FFFFFF'%3ETHD%3C/text%3E%3C/svg%3E">
 
-  <!-- Preload hero -->
+  <!-- Preload first hero image -->
   <link rel="preload" as="image" href="https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg">
 
-  <!-- Fonts (Luxury serif + sans) -->
+  <!-- Fonts (Luxury) -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -35,15 +35,21 @@
   <!-- NAVIGATION -->
   <nav class="navbar" id="navbar">
     <div class="nav-wrapper">
-      <a href="#home" class="logo" aria-label="The Hair Direction Home">THE HAIR DIRECTION</a>
+      <a href="#home" class="logo" id="logo" aria-label="The Hair Direction Home">
+        <span class="logo-char">T</span><span class="logo-char">H</span><span class="logo-char">E</span>
+        <span class="logo-space"> </span>
+        <span class="logo-char">H</span><span class="logo-char">A</span><span class="logo-char">I</span><span class="logo-char">R</span>
+        <span class="logo-space"> </span>
+        <span class="logo-char">D</span><span class="logo-char">I</span><span class="logo-char">R</span><span class="logo-char">E</span><span class="logo-char">C</span><span class="logo-char">T</span><span class="logo-char">I</span><span class="logo-char">O</span><span class="logo-char">N</span>
+      </a>
       <ul class="nav-menu" id="navMenu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#location">Location</a></li>
-        <li><a href="#booking" class="btn">Book Now</a></li>
+        <li class="menu-item"><a href="#home">Home</a></li>
+        <li class="menu-item"><a href="#about">About</a></li>
+        <li class="menu-item"><a href="#services">Services</a></li>
+        <li class="menu-item"><a href="#gallery">Gallery</a></li>
+        <li class="menu-item"><a href="#reviews">Reviews</a></li>
+        <li class="menu-item"><a href="#location">Location</a></li>
+        <li class="menu-item"><a href="#booking" class="btn">Book Now</a></li>
       </ul>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false">
         <i class="fas fa-bars"></i>
@@ -51,24 +57,45 @@
     </div>
   </nav>
 
-  <!-- HERO LUXURY -->
+  <!-- HERO LUXURY (6 HD IMAGES - 1 SEC AUTOPLAY) -->
   <section class="hero luxury-hero" id="home">
     <!-- Background slider -->
     <div class="hero-swiper swiper" aria-label="Luxury salon showcase">
       <div class="swiper-wrapper">
+        <!-- Image 1: Interior (golden hour) -->
         <div class="swiper-slide">
           <div class="slide-media">
             <img src="https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Luxurious salon interior golden hour">
           </div>
         </div>
+        <!-- Image 2: Blow-dry glamour -->
         <div class="swiper-slide">
           <div class="slide-media">
             <img src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg" alt="Glamorous blow-dry styling">
           </div>
         </div>
+        <!-- Image 3: Bridal elegance -->
         <div class="swiper-slide">
           <div class="slide-media">
-            <img src="https://i.ibb.co/wh3MRWvb/photo-1610047614301-13c63f00c032-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Bridal elegance">
+            <img src="https://i.ibb.co/wh3MRWvb/photo-1610047614301-13c63f00c032-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Bridal hair & makeup elegance">
+          </div>
+        </div>
+        <!-- Image 4: Hair spa relaxation -->
+        <div class="swiper-slide">
+          <div class="slide-media">
+            <img src="https://i.ibb.co/spMFwTC2/photo-1580618672591-eb180b1a973f-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTUw-NTcyf-A-ix.jpg" alt="Relaxing hair spa treatment">
+          </div>
+        </div>
+        <!-- Image 5: Color highlights -->
+        <div class="swiper-slide">
+          <div class="slide-media">
+            <img src="https://i.ibb.co/wFS419MP/photo-1717160675489-7779f2c91999-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Hair color and highlights">
+          </div>
+        </div>
+        <!-- Image 6: Men's grooming -->
+        <div class="swiper-slide">
+          <div class="slide-media">
+            <img src="https://i.ibb.co/8DzkwzXW/photo-1481068164146-e8beb686f4d2-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Men's grooming services">
           </div>
         </div>
       </div>
@@ -132,27 +159,33 @@
         <p class="split-text" data-split data-aos="fade-up">Premium hair services crafted with precision and care</p>
       </div>
       <div class="services-grid">
-        <div class="service-card pearl-card" data-aos="fade-up">
+        <!-- Service 1: Haircut & Styling -->
+        <div class="service-card pearl-card slide-in-img" data-direction="left">
           <img loading="lazy" src="https://i.ibb.co/C5YDRSLB/photo-1695527081848-1e46c06e6458-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Haircut">
           <div class="service-info"><div class="icon">✂️</div><h3 class="split-text" data-split>Haircut & Styling</h3><p>Precision cuts, layers, fringe and signature blow-dry finishes.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
         </div>
-        <div class="service-card pearl-card" data-aos="fade-up" data-aos-delay="100">
+        <!-- Service 2: Hair Wash & Spa -->
+        <div class="service-card pearl-card slide-in-img" data-direction="bottom">
           <img loading="lazy" src="https://i.ibb.co/xtjBpSvv/photo-1554519934-e32b1629d9ee-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ixlib.jpg" alt="Spa">
           <div class="service-info"><div class="icon">💆</div><h3 class="split-text" data-split>Hair Wash & Spa</h3><p>Relaxing scalp rituals and deep-nourish spa for shine and health.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
         </div>
-        <div class="service-card pearl-card" data-aos="fade-up" data-aos-delay="200">
+        <!-- Service 3: Colour & Highlights -->
+        <div class="service-card pearl-card slide-in-img" data-direction="right">
           <img loading="lazy" src="https://i.ibb.co/wFS419MP/photo-1717160675489-7779f2c91999-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Color">
           <div class="service-info"><div class="icon">🎨</div><h3 class="split-text" data-split>Colour & Highlights</h3><p>Balayage, global color, highlights and gloss toning.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
         </div>
-        <div class="service-card pearl-card" data-aos="fade-up" data-aos-delay="300">
+        <!-- Service 4: Blow Dry & Finishing -->
+        <div class="service-card pearl-card slide-in-img" data-direction="left">
           <img loading="lazy" src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg" alt="Blow Dry">
           <div class="service-info"><div class="icon">✨</div><h3 class="split-text" data-split>Blow Dry & Finishing</h3><p>Smooth, bouncy or glam waves — long-lasting finish.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
         </div>
-        <div class="service-card pearl-card" data-aos="fade-up" data-aos-delay="400">
+        <!-- Service 5: Bridal Hair & Makeup -->
+        <div class="service-card pearl-card slide-in-img" data-direction="bottom">
           <img loading="lazy" src="https://i.ibb.co/wh3MRWvb/photo-1610047614301-13c63f00c032-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Bridal">
           <div class="service-info"><div class="icon">👰</div><h3 class="split-text" data-split>Bridal Hair & Makeup</h3><p>Classic to contemporary bridal looks.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
         </div>
-        <div class="service-card pearl-card" data-aos="fade-up" data-aos-delay="500">
+        <!-- Service 6: Men's Grooming -->
+        <div class="service-card pearl-card slide-in-img" data-direction="right">
           <img loading="lazy" src="https://i.ibb.co/8DzkwzXW/photo-1481068164146-e8beb686f4d2-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Men">
           <div class="service-info"><div class="icon">🧔</div><h3 class="split-text" data-split>Men's Grooming</h3><p>Clean fades, texture, beard shaping.</p><a href="#booking" class="btn pearl-btn">Book Now</a></div>
         </div>
@@ -169,12 +202,12 @@
         <p class="split-text" data-split data-aos="fade-up">Experience luxury finishes and premium ambience.</p>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item pearl-card" data-aos="flip-left"><img loading="lazy" src="https://i.ibb.co/SX5ySpJK/premium-photo-1664537434872-db1649ce689f-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Styling"><div class="gallery-text"><h3>Signature Styling</h3><p>Precision & Finish</p></div></div>
-        <div class="gallery-item pearl-card" data-aos="flip-left" data-aos-delay="100"><img loading="lazy" src="https://i.ibb.co/hz8Z0Hq/premium-photo-1661438191430-656b51362d7a-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Ambience"><div class="gallery-text"><h3>Modern Ambience</h3><p>Comfort & Luxury</p></div></div>
-        <div class="gallery-item pearl-card" data-aos="flip-left" data-aos-delay="200"><img loading="lazy" src="https://i.ibb.co/spMFwTC2/photo-1580618672591-eb180b1a973f-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTUw-NTcyf-A-ix.jpg" alt="Spa"><div class="gallery-text"><h3>Hair Spa</h3><p>Relax & Repair</p></div></div>
-        <div class="gallery-item pearl-card" data-aos="flip-left" data-aos-delay="300"><img loading="lazy" src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg" alt="Blow Dry"><div class="gallery-text"><h3>Blow Dry</h3><p>Smooth & Bouncy</p></div></div>
-        <div class="gallery-item pearl-card" data-aos="flip-left" data-aos-delay="400"><img loading="lazy" src="https://i.ibb.co/k6MNfjWT/photo-1610047614256-023d7c028d0b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Bridal"><div class="gallery-text"><h3>Bridal Glam</h3><p>Traditional & Modern</p></div></div>
-        <div class="gallery-item pearl-card" data-aos="flip-left" data-aos-delay="500"><img loading="lazy" src="https://i.ibb.co/WW4BTgzf/premium-photo-1676677522880-639b99b1f27b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Studio"><div class="gallery-text"><h3>Studio Moments</h3><p>Flawless Finish</p></div></div>
+        <div class="gallery-item pearl-card slide-in-img" data-direction="left"><img loading="lazy" src="https://i.ibb.co/SX5ySpJK/premium-photo-1664537434872-db1649ce689f-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Styling"><div class="gallery-text"><h3>Signature Styling</h3><p>Precision & Finish</p></div></div>
+        <div class="gallery-item pearl-card slide-in-img" data-direction="top"><img loading="lazy" src="https://i.ibb.co/hz8Z0Hq/premium-photo-1661438191430-656b51362d7a-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Ambience"><div class="gallery-text"><h3>Modern Ambience</h3><p>Comfort & Luxury</p></div></div>
+        <div class="gallery-item pearl-card slide-in-img" data-direction="right"><img loading="lazy" src="https://i.ibb.co/spMFwTC2/photo-1580618672591-eb180b1a973f-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTUw-NTcyf-A-ix.jpg" alt="Spa"><div class="gallery-text"><h3>Hair Spa</h3><p>Relax & Repair</p></div></div>
+        <div class="gallery-item pearl-card slide-in-img" data-direction="left"><img loading="lazy" src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg" alt="Blow Dry"><div class="gallery-text"><h3>Blow Dry</h3><p>Smooth & Bouncy</p></div></div>
+        <div class="gallery-item pearl-card slide-in-img" data-direction="bottom"><img loading="lazy" src="https://i.ibb.co/k6MNfjWT/photo-1610047614256-023d7c028d0b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Bridal"><div class="gallery-text"><h3>Bridal Glam</h3><p>Traditional & Modern</p></div></div>
+        <div class="gallery-item pearl-card slide-in-img" data-direction="right"><img loading="lazy" src="https://i.ibb.co/WW4BTgzf/premium-photo-1676677522880-639b99b1f27b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Studio"><div class="gallery-text"><h3>Studio Moments</h3><p>Flawless Finish</p></div></div>
       </div>
     </div>
   </section>
@@ -245,10 +278,43 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-grid">
-      <div><h3>THE HAIR DIRECTION</h3><p>Premium hair salon for cuts, color, spa and bridal glam in Kamla Nagar, Delhi.</p><p style="margin-top:10px">Built by <a href="https://hanunova.oneapp.dev/" target="_blank" style="color:#A8D8EA; text-decoration:none;">HanuNova</a></p><div class="social"><a href="https://www.instagram.com/the_hair_direction_salon?utm_source=ig_web_button_share_sheet&igsh=NGFiZGgxZTVwb2Fs" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/thehairdirectionsalon/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a><a href="https://wa.me/917503135104" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div>
-      <div><h3>Services</h3><ul><li><a href="#services">Haircut & Styling</a></li><li><a href="#services">Hair Wash & Spa</a></li><li><a href="#services">Colour & Highlights</a></li><li><a href="#services">Blow Dry & Finishing</a></li><li><a href="#services">Bridal Hair & Makeup</a></li><li><a href="#services">Men's Grooming</a></li></ul></div>
-      <div><h3>Quick Links</h3><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#booking">Book Now</a></li></ul></div>
-      <div><h3>Contact</h3><p>44ub, Chattori Lane, Block UB,<br>Jawahar Nagar, Kamla Nagar,<br>Delhi, 110007</p><p><a href="tel:+917503135104" style="color:inherit; text-decoration:none;">+91 7503135104</a></p><p><a href="mailto:prabhatlal1997@gmail.com" style="color:inherit; text-decoration:none;">prabhatlal1997@gmail.com</a></p></div>
+      <div>
+        <h3 class="footer-text">THE HAIR DIRECTION</h3>
+        <p class="footer-text">Premium hair salon for cuts, color, spa and bridal glam in Kamla Nagar, Delhi.</p>
+        <p class="footer-text" style="margin-top:10px">Built by <a href="https://hanunova.oneapp.dev/" target="_blank" style="color:#A8D8EA; text-decoration:none;">HanuNova</a></p>
+        <div class="social">
+          <a href="https://www.instagram.com/the_hair_direction_salon?utm_source=ig_web_button_share_sheet&igsh=NGFiZGgxZTVwb2Fs" target="_blank" class="footer-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/thehairdirectionsalon/" target="_blank" class="footer-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/917503135104" target="_blank" class="footer-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer-text">Services</h3>
+        <ul>
+          <li><a href="#services" class="footer-link">Haircut & Styling</a></li>
+          <li><a href="#services" class="footer-link">Hair Wash & Spa</a></li>
+          <li><a href="#services" class="footer-link">Colour & Highlights</a></li>
+          <li><a href="#services" class="footer-link">Blow Dry & Finishing</a></li>
+          <li><a href="#services" class="footer-link">Bridal Hair & Makeup</a></li>
+          <li><a href="#services" class="footer-link">Men's Grooming</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-text">Quick Links</h3>
+        <ul>
+          <li><a href="#home" class="footer-link">Home</a></li>
+          <li><a href="#about" class="footer-link">About</a></li>
+          <li><a href="#gallery" class="footer-link">Gallery</a></li>
+          <li><a href="#reviews" class="footer-link">Reviews</a></li>
+          <li><a href="#booking" class="footer-link">Book Now</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-text">Contact</h3>
+        <p class="footer-text">44ub, Chattori Lane, Block UB,<br>Jawahar Nagar, Kamla Nagar,<br>Delhi, 110007</p>
+        <p class="footer-text"><a href="tel:+917503135104" class="footer-link" style="color:inherit; text-decoration:none;">+91 7503135104</a></p>
+        <p class="footer-text"><a href="mailto:prabhatlal1997@gmail.com" class="footer-link" style="color:inherit; text-decoration:none;">prabhatlal1997@gmail.com</a></p>
+      </div>
     </div>
     <div class="footer-bottom"><p>&copy; <span id="year"></span> The Hair Direction Salon. All Rights Reserved.</p></div>
   </footer>
