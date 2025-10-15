@@ -1,4 +1,4 @@
-// ADMIN CREDENTIALS (Hardcoded - For production use Firebase Authentication)
+// ADMIN CREDENTIALS
 const ADMIN_USER = 'thehairdirection6000';
 const ADMIN_PASS = 'thehairdirection6000';
 
@@ -54,17 +54,44 @@ document.querySelectorAll('.tab').forEach(tab => {
   });
 });
 
-// HERO SECTION HANDLERS
+// ========== IMAGE UPLOAD TO IMGBB (Free Hosting) ==========
+async function uploadToImgBB(file) {
+  const formData = new FormData();
+  formData.append('image', file);
+  
+  try {
+    const response = await fetch(`https://api.imgbb.com/1/upload?key=${window.IMGBB_API_KEY}`, {
+      method: 'POST',
+      body: formData
+    });
+    
+    const data = await response.json();
+    if (data.success) {
+      return data.data.url; // Direct image URL
+    } else {
+      throw new Error('Upload failed');
+    }
+  } catch (error) {
+    console.error('ImgBB upload error:', error);
+    alert('Image upload failed. Please check your ImgBB API key.');
+    return null;
+  }
+}
+
+// ========== HERO SECTION ==========
 const heroForm = document.getElementById('heroForm');
 const heroImageUpload = document.getElementById('heroImageUpload');
 const heroImagesInput = document.getElementById('heroImagesInput');
 const heroImagesPreview = document.getElementById('heroImagesPreview');
+const heroLoading = document.getElementById('heroLoading');
 
 heroImageUpload.addEventListener('click', () => heroImagesInput.click());
 
 let heroImages = [];
+let heroImageUrls = [];
+
 heroImagesInput.addEventListener('change', (e) => {
-  const files = Array.from(e.target.files).slice(0, 6); // Max 6 images
+  const files = Array.from(e.target.files).slice(0, 6);
   heroImages = files;
   displayHeroPreview(files);
 });
@@ -88,40 +115,52 @@ function displayHeroPreview(files) {
 
 window.removeHeroImage = (index) => {
   heroImages.splice(index, 1);
+  heroImageUrls.splice(index, 1);
   displayHeroPreview(heroImages);
 };
 
 heroForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  
+  heroLoading.style.display = 'block';
+  
   const data = {
     eyebrow: document.getElementById('heroEyebrowInput').value,
     title: document.getElementById('heroTitleInput').value,
     subtitle: document.getElementById('heroSubtitleInput').value
   };
   
-  // Save to Firebase
-  await db.ref('hero').set(data);
-  
-  // Upload images if any
+  // Upload images to ImgBB
   if (heroImages.length > 0) {
     const imageUrls = [];
     for (let i = 0; i < heroImages.length; i++) {
-      const url = await uploadImage(heroImages[i], `hero/image${i}`);
-      imageUrls.push(url);
+      const url = await uploadToImgBB(heroImages[i]);
+      if (url) imageUrls.push(url);
     }
-    await db.ref('hero/images').set(imageUrls);
+    data.images = imageUrls;
+    heroImageUrls = imageUrls;
+  } else if (heroImageUrls.length > 0) {
+    data.images = heroImageUrls;
   }
   
+  // Save to Firebase Database
+  await db.ref('hero').set(data);
+  
+  heroLoading.style.display = 'none';
   showSuccess('heroSuccess');
+  heroImages = [];
 });
 
-// ABOUT SECTION HANDLERS
+// ========== ABOUT SECTION ==========
 const aboutForm = document.getElementById('aboutForm');
 const aboutImageUpload = document.getElementById('aboutImageUpload');
 const aboutImageInput = document.getElementById('aboutImageInput');
 const aboutImagePreview = document.getElementById('aboutImagePreview');
+const aboutLoading = document.getElementById('aboutLoading');
 
 aboutImageUpload.addEventListener('click', () => aboutImageInput.click());
+
+let aboutImageUrl = '';
 
 aboutImageInput.addEventListener('change', (e) => {
   const file = e.target.files[0];
@@ -140,46 +179,76 @@ aboutImageInput.addEventListener('change', (e) => {
 
 aboutForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  
+  aboutLoading.style.display = 'block';
+  
   const data = {
     title: document.getElementById('aboutTitleInput').value,
     desc1: document.getElementById('aboutDesc1Input').value,
     desc2: document.getElementById('aboutDesc2Input').value
   };
   
-  await db.ref('about').set(data);
-  
   if (aboutImageInput.files[0]) {
-    const url = await uploadImage(aboutImageInput.files[0], 'about/image');
-    await db.ref('about/image').set(url);
+    const url = await uploadToImgBB(aboutImageInput.files[0]);
+    if (url) {
+      data.image = url;
+      aboutImageUrl = url;
+    }
+  } else if (aboutImageUrl) {
+    data.image = aboutImageUrl;
   }
   
+  await db.ref('about').set(data);
+  
+  aboutLoading.style.display = 'none';
   showSuccess('aboutSuccess');
 });
 
-// SERVICES HANDLERS
+// ========== SERVICES SECTION ==========
 const servicesForm = document.getElementById('servicesForm');
 const servicesContainer = document.getElementById('servicesContainer');
 const addServiceBtn = document.getElementById('addServiceBtn');
+const serviceCountSpan = document.getElementById('serviceCount');
+const servicesLoading = document.getElementById('servicesLoading');
 
 let services = [];
 
 addServiceBtn.addEventListener('click', () => {
-  const index = services.length;
-  services.push({ icon: '✂️', title: '', description: '', image: null });
+  services.push({ 
+    icon: '✂️', 
+    title: '', 
+    description: '', 
+    image: null,
+    imageUrl: ''
+  });
   renderServices();
 });
 
 function renderServices() {
+  serviceCountSpan.textContent = services.length;
   servicesContainer.innerHTML = services.map((service, index) => `
-    <div style="background:rgba(255,255,255,.05); padding:20px; border-radius:12px; margin-bottom:15px; border:1px solid rgba(168,216,234,.2)">
-      <h4 style="color:#A8D8EA; margin-bottom:15px">Service ${index + 1}</h4>
+    <div class="service-item">
+      <h4>Service ${index + 1}</h4>
       <div class="form-row">
-        <input type="text" class="input-field" placeholder="Icon (emoji)" value="${service.icon}" onchange="updateService(${index}, 'icon', this.value)">
-        <input type="text" class="input-field" placeholder="Service Title" value="${service.title}" onchange="updateService(${index}, 'title', this.value)">
+        <div class="form-group">
+          <label>Icon (emoji)</label>
+          <input type="text" class="input-field" value="${service.icon}" onchange="updateService(${index}, 'icon', this.value)">
+        </div>
+        <div class="form-group">
+          <label>Service Title</label>
+          <input type="text" class="input-field" placeholder="e.g., Haircut & Styling" value="${service.title}" onchange="updateService(${index}, 'title', this.value)">
+        </div>
       </div>
-      <textarea class="input-field" placeholder="Service Description" onchange="updateService(${index}, 'description', this.value)">${service.description}</textarea>
-      <input type="file" accept="image/*" onchange="updateServiceImage(${index}, this.files[0])" style="margin-top:10px; color:#fff">
-      <button type="button" onclick="removeService(${index})" style="background:rgba(255,0,0,.3); color:#fff; border:none; padding:8px 16px; border-radius:20px; cursor:pointer; margin-top:10px">Remove Service</button>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="input-field" placeholder="Brief description..." onchange="updateService(${index}, 'description', this.value)">${service.description}</textarea>
+      </div>
+      <div class="form-group">
+        <label>Service Image</label>
+        <input type="file" accept="image/*" onchange="updateServiceImage(${index}, this.files[0])" style="color:#fff; padding:10px; background:rgba(255,255,255,.1); border-radius:8px; border:1px solid rgba(168,216,234,.3); width:100%">
+        ${service.imageUrl ? `<img src="${service.imageUrl}" style="width:100px; height:100px; object-fit:cover; border-radius:8px; margin-top:10px">` : ''}
+      </div>
+      <button type="button" class="btn-remove" onclick="removeService(${index})">🗑️ Remove Service</button>
     </div>
   `).join('');
 }
@@ -199,6 +268,9 @@ window.removeService = (index) => {
 
 servicesForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  
+  servicesLoading.style.display = 'block';
+  
   const servicesData = [];
   
   for (let i = 0; i < services.length; i++) {
@@ -206,7 +278,12 @@ servicesForm.addEventListener('submit', async (e) => {
     let imageUrl = service.imageUrl || '';
     
     if (service.image) {
-      imageUrl = await uploadImage(service.image, `services/service${i}`);
+      const url = await uploadToImgBB(service.image);
+      if (url) {
+        imageUrl = url;
+        services[i].imageUrl = url;
+        services[i].image = null;
+      }
     }
     
     servicesData.push({
@@ -218,18 +295,25 @@ servicesForm.addEventListener('submit', async (e) => {
   }
   
   await db.ref('services').set(servicesData);
+  
+  servicesLoading.style.display = 'none';
   showSuccess('servicesSuccess');
+  renderServices();
 });
 
-// GALLERY HANDLERS
+// ========== GALLERY SECTION ==========
 const galleryForm = document.getElementById('galleryForm');
 const galleryImageUpload = document.getElementById('galleryImageUpload');
 const galleryImagesInput = document.getElementById('galleryImagesInput');
 const galleryImagesPreview = document.getElementById('galleryImagesPreview');
+const galleryCountSpan = document.getElementById('galleryCount');
+const galleryLoading = document.getElementById('galleryLoading');
 
 galleryImageUpload.addEventListener('click', () => galleryImagesInput.click());
 
 let galleryImages = [];
+let galleryImageUrls = [];
+
 galleryImagesInput.addEventListener('change', (e) => {
   const files = Array.from(e.target.files);
   galleryImages = files;
@@ -255,29 +339,38 @@ function displayGalleryPreview(files) {
 
 window.removeGalleryImage = (index) => {
   galleryImages.splice(index, 1);
+  galleryImageUrls.splice(index, 1);
   displayGalleryPreview(galleryImages);
 };
 
 galleryForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   
+  galleryLoading.style.display = 'block';
+  
   if (galleryImages.length > 0) {
     const imageUrls = [];
     for (let i = 0; i < galleryImages.length; i++) {
-      const url = await uploadImage(galleryImages[i], `gallery/image${Date.now()}_${i}`);
-      imageUrls.push(url);
+      const url = await uploadToImgBB(galleryImages[i]);
+      if (url) imageUrls.push(url);
     }
-    await db.ref('gallery/images').set(imageUrls);
+    galleryImageUrls = [...galleryImageUrls, ...imageUrls];
+    await db.ref('gallery/images').set(galleryImageUrls);
   }
   
+  galleryLoading.style.display = 'none';
   showSuccess('gallerySuccess');
+  galleryImages = [];
+  galleryImagesInput.value = '';
+  galleryImagesPreview.innerHTML = '';
 });
 
-// CONTACT HANDLERS
+// ========== CONTACT SECTION ==========
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  
   const data = {
     phone: document.getElementById('contactPhone').value,
     whatsapp: document.getElementById('contactWhatsApp').value,
@@ -291,13 +384,7 @@ contactForm.addEventListener('submit', async (e) => {
   showSuccess('contactSuccess');
 });
 
-// HELPER FUNCTIONS
-async function uploadImage(file, path) {
-  const storageRef = storage.ref(`${path}_${Date.now()}`);
-  await storageRef.put(file);
-  return await storageRef.getDownloadURL();
-}
-
+// ========== HELPER FUNCTIONS ==========
 function showSuccess(elementId) {
   const el = document.getElementById(elementId);
   el.style.display = 'block';
@@ -306,7 +393,7 @@ function showSuccess(elementId) {
   }, 3000);
 }
 
-// LOAD EXISTING DATA
+// ========== LOAD EXISTING DATA ==========
 async function loadAllData() {
   try {
     // Load Hero
@@ -316,6 +403,7 @@ async function loadAllData() {
       document.getElementById('heroEyebrowInput').value = data.eyebrow || '';
       document.getElementById('heroTitleInput').value = data.title || '';
       document.getElementById('heroSubtitleInput').value = data.subtitle || '';
+      if (data.images) heroImageUrls = data.images;
     }
     
     // Load About
@@ -325,14 +413,30 @@ async function loadAllData() {
       document.getElementById('aboutTitleInput').value = data.title || '';
       document.getElementById('aboutDesc1Input').value = data.desc1 || '';
       document.getElementById('aboutDesc2Input').value = data.desc2 || '';
+      if (data.image) {
+        aboutImageUrl = data.image;
+        aboutImagePreview.innerHTML = `<div class="preview-item"><img src="${data.image}" alt="About"></div>`;
+      }
     }
     
     // Load Services
     const servicesData = await db.ref('services').once('value');
     if (servicesData.exists()) {
-      services = servicesData.val();
-      services.forEach(s => { s.imageUrl = s.image; s.image = null; });
+      services = servicesData.val().map(s => ({
+        icon: s.icon,
+        title: s.title,
+        description: s.description,
+        image: null,
+        imageUrl: s.image
+      }));
       renderServices();
+    }
+    
+    // Load Gallery
+    const galleryData = await db.ref('gallery/images').once('value');
+    if (galleryData.exists()) {
+      galleryImageUrls = galleryData.val() || [];
+      galleryCountSpan.textContent = galleryImageUrls.length;
     }
     
     // Load Contact
