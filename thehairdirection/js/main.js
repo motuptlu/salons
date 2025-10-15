@@ -37,7 +37,7 @@ window.addEventListener('scroll', () => {
 });
 scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// Smooth scroll for anchor links
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
@@ -74,17 +74,20 @@ document.getElementById('bookingForm').addEventListener('submit', e => {
 // Set min date to today
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-// HERO 2.0: Swiper fade slider (prefers-reduced-motion aware)
+// HERO Pro: Swiper fade slider (smooth + premium)
 window.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (window.Swiper) {
-    new Swiper('.hero-slider', {
+    new Swiper('.hero-swiper', {
       loop: true,
       effect: 'fade',
-      speed: 900,
-      autoplay: reduceMotion ? false : { delay: 3500, disableOnInteraction: false },
+      speed: 1100,
+      autoplay: reduceMotion ? false : { delay: 3800, disableOnInteraction: false },
       allowTouchMove: true,
-      pagination: { el: '.hero-pagination', clickable: true }
+      grabCursor: true,
+      keyboard: { enabled: true },
+      pagination: { el: '.hero-pagination', clickable: true },
+      navigation: { nextEl: '.hero-next', prevEl: '.hero-prev' }
     });
   }
 });
