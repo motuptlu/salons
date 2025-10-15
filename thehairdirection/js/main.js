@@ -74,34 +74,17 @@ document.getElementById('bookingForm').addEventListener('submit', e => {
 // Set min date to today
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-// HERO: auto slider (2s) with imgbb direct links (mobile-friendly, reduced motion aware)
-const heroImages = [
-  'https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg', // Interior
-  'https://i.ibb.co/C5YDRSLB/photo-1695527081848-1e46c06e6458-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg', // Cut
-  'https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg', // Blow
-  'https://i.ibb.co/fV6vBXS6/photo-1549236177-f9b0031756eb-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ixlib.jpg', // Bridal
-  'https://i.ibb.co/WW4BTgzf/premium-photo-1676677522880-639b99b1f27b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg'  // Work
-];
-const heroFallback = heroImages[0];
-const hero = document.querySelector('.hero');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-function setHeroBg(url){
-  const img = new Image();
-  img.onload = () => {
-    hero.style.background = `linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('${url}') center/cover no-repeat`;
-  };
-  img.onerror = () => {
-    hero.style.background = `linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('${heroFallback}') center/cover no-repeat`;
-  };
-  img.src = url;
-}
-
-let idx = 0;
-setHeroBg(heroImages[idx]);
-if (!reduceMotion) {
-  setInterval(() => {
-    idx = (idx + 1) % heroImages.length;
-    setHeroBg(heroImages[idx]);
-  }, 2000);
-}
+// HERO 2.0: Swiper fade slider (prefers-reduced-motion aware)
+window.addEventListener('DOMContentLoaded', () => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (window.Swiper) {
+    new Swiper('.hero-slider', {
+      loop: true,
+      effect: 'fade',
+      speed: 900,
+      autoplay: reduceMotion ? false : { delay: 3500, disableOnInteraction: false },
+      allowTouchMove: true,
+      pagination: { el: '.hero-pagination', clickable: true }
+    });
+  }
+});
