@@ -1,14 +1,15 @@
-// Year in footer
+// Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // AOS init
-AOS.init({ duration: 1000, once: false, mirror: true, offset: 100, easing: 'ease-in-out' });
+AOS.init({ duration: 800, once: false, mirror: true, offset: 100, easing: 'ease-out' });
 
-// Mobile Menu
+// Mobile menu
 const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
 menuToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('active');
+  const open = navMenu.classList.toggle('active');
+  menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   const icon = menuToggle.querySelector('i');
   icon.classList.toggle('fa-bars');
   icon.classList.toggle('fa-times');
@@ -16,14 +17,15 @@ menuToggle.addEventListener('click', () => {
 document.querySelectorAll('.nav-menu a').forEach(link => {
   link.addEventListener('click', () => {
     navMenu.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.querySelector('i').className = 'fas fa-bars';
   });
 });
 
-// Navbar scroll
+// Navbar scroll style
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 100) navbar.classList.add('scrolled');
+  if (window.scrollY > 80) navbar.classList.add('scrolled');
   else navbar.classList.remove('scrolled');
 });
 
@@ -35,7 +37,7 @@ window.addEventListener('scroll', () => {
 });
 scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// Smooth scroll
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
@@ -72,23 +74,19 @@ document.getElementById('bookingForm').addEventListener('submit', e => {
 // Set min date to today
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-// HERO: Auto background slider (2s) — imgbb direct links
+// HERO: auto slider (2s) with imgbb direct links (mobile-friendly, reduced motion aware)
 const heroImages = [
-  // Interior/ambience
-  'https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg',
-  // Haircut moment
-  'https://i.ibb.co/C5YDRSLB/photo-1695527081848-1e46c06e6458-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg',
-  // Blow dry
-  'https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg',
-  // Bridal
-  'https://i.ibb.co/fV6vBXS6/photo-1549236177-f9b0031756eb-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ixlib.jpg',
-  // Stylist at work
-  'https://i.ibb.co/WW4BTgzf/premium-photo-1676677522880-639b99b1f27b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg'
+  'https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg', // Interior
+  'https://i.ibb.co/C5YDRSLB/photo-1695527081848-1e46c06e6458-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg', // Cut
+  'https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg', // Blow
+  'https://i.ibb.co/fV6vBXS6/photo-1549236177-f9b0031756eb-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ixlib.jpg', // Bridal
+  'https://i.ibb.co/WW4BTgzf/premium-photo-1676677522880-639b99b1f27b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg'  // Work
 ];
-const heroFallback = 'https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg';
+const heroFallback = heroImages[0];
 const hero = document.querySelector('.hero');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function setHeroBgFrom(url) {
+function setHeroBg(url){
   const img = new Image();
   img.onload = () => {
     hero.style.background = `linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('${url}') center/cover no-repeat`;
@@ -99,9 +97,11 @@ function setHeroBgFrom(url) {
   img.src = url;
 }
 
-let heroIndex = 0;
-setHeroBgFrom(heroImages[heroIndex] || heroFallback);
-setInterval(() => {
-  heroIndex = (heroIndex + 1) % heroImages.length;
-  setHeroBgFrom(heroImages[heroIndex] || heroFallback);
-}, 2000);
+let idx = 0;
+setHeroBg(heroImages[idx]);
+if (!reduceMotion) {
+  setInterval(() => {
+    idx = (idx + 1) % heroImages.length;
+    setHeroBg(heroImages[idx]);
+  }, 2000);
+}
