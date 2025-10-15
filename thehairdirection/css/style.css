@@ -56,7 +56,7 @@ img{max-width:100%;display:block}
 .hero{
   height:100vh; position:relative; display:flex; align-items:center; justify-content:center; text-align:center;
   background:linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-             url('https://i.imgur.com/1Zb2t5k.jpeg') center/cover no-repeat; /* fallback */
+             url('https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg') center/cover no-repeat; /* fallback */
 }
 .hero-content{position:relative; z-index:2; max-width:1000px; padding:40px}
 .hero h1{
