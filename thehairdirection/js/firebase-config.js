@@ -17,4 +17,4 @@ const IMGBB_API_KEY = '63fe6beb3e4c2d19460cfdac7244e3b7'; // PASTE YOUR API KEY 
 
 // Export
 window.db = database;
-window.IMGBB_API_KEY = IMGBB_API_KEY;
+window.IMGBB_API_KEY = '63fe6beb3e4c2d19460cfdac7244e3b7';
