@@ -32,7 +32,7 @@ img{max-width:100%;display:block}
   position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.6;
 }
 
-/* ===== LOGO FALLING ANIMATION (ऊपर से गिरते letters) ===== */
+/* ===== LOGO FALLING ANIMATION ===== */
 .logo{
   font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:700; 
   text-decoration:none; letter-spacing:4px; transition:.3s; display:inline-block;
@@ -69,13 +69,9 @@ img{max-width:100%;display:block}
   100%{opacity:1; transform:translateY(0) rotate(0)}
 }
 
-/* ===== MENU SHAKE EFFECT (hover पर) ===== */
-.menu-item{
-  transition:transform .3s ease;
-}
-.menu-item:hover{
-  animation:shakeMenu 0.5s ease-in-out;
-}
+/* ===== MENU SHAKE EFFECT ===== */
+.menu-item{transition:transform .3s ease}
+.menu-item:hover{animation:shakeMenu 0.5s ease-in-out}
 @keyframes shakeMenu{
   0%, 100%{transform:translateX(0)}
   25%{transform:translateX(-5px) rotate(-2deg)}
@@ -83,14 +79,9 @@ img{max-width:100%;display:block}
   75%{transform:translateX(-3px) rotate(-1deg)}
 }
 
-/* ===== FOOTER SHAKE EFFECT (click/scroll पर) ===== */
-.footer-text, .footer-link{
-  transition:transform .3s ease;
-  cursor:pointer;
-}
-.footer-text:hover, .footer-link:hover{
-  animation:shakeFooter 0.4s ease-in-out;
-}
+/* ===== FOOTER SHAKE EFFECT ===== */
+.footer-text, .footer-link{transition:transform .3s ease; cursor:pointer}
+.footer-text:hover, .footer-link:hover{animation:shakeFooter 0.4s ease-in-out}
 @keyframes shakeFooter{
   0%, 100%{transform:translateX(0)}
   20%{transform:translateX(-4px) rotate(-1deg)}
@@ -99,28 +90,17 @@ img{max-width:100%;display:block}
   80%{transform:translateX(3px)}
 }
 
-/* ===== IMAGE SLIDE-IN ANIMATIONS (out-of-screen से आना) ===== */
-.slide-in-img{
-  opacity:0;
-  transition:all 0.8s cubic-bezier(.25,.46,.45,.94);
-}
+/* ===== IMAGE SLIDE-IN ANIMATIONS ===== */
+.slide-in-img{opacity:0; transition:all 0.8s cubic-bezier(.25,.46,.45,.94)}
 .slide-in-img[data-direction="left"]{transform:translateX(-100vw)}
 .slide-in-img[data-direction="right"]{transform:translateX(100vw)}
 .slide-in-img[data-direction="top"]{transform:translateY(-100vh)}
 .slide-in-img[data-direction="bottom"]{transform:translateY(100vh)}
+.slide-in-img.visible{opacity:1; transform:translate(0, 0)}
 
-.slide-in-img.visible{
-  opacity:1;
-  transform:translate(0, 0);
-}
-
-/* ===== IMAGE HOVER SHAKE (smooth movement) ===== */
-.slide-in-img img{
-  transition:transform .3s ease;
-}
-.slide-in-img:hover img{
-  animation:shakeImage 0.6s ease-in-out infinite;
-}
+/* ===== IMAGE HOVER SHAKE ===== */
+.slide-in-img img{transition:transform .3s ease}
+.slide-in-img:hover img{animation:shakeImage 0.6s ease-in-out infinite}
 @keyframes shakeImage{
   0%, 100%{transform:translate(0, 0) rotate(0)}
   25%{transform:translate(-3px, -3px) rotate(-1deg)}
@@ -159,7 +139,7 @@ img{max-width:100%;display:block}
 .btn-outline-pearl:hover{background:var(--crystal-blue); color:var(--white)}
 .menu-toggle{display:none; background:transparent; border:2px solid var(--crystal-blue); color:var(--crystal-deep); font-size:1.1rem; cursor:pointer; padding:8px 10px; border-radius:12px}
 
-/* HERO LUXURY */
+/* ===== HERO FULLY TRANSPARENT (NO WHITE OVERLAY) ===== */
 .luxury-hero{
   min-height:95vh; position:relative; display:flex; align-items:center; justify-content:center; padding-top:70px; overflow:hidden;
 }
@@ -167,28 +147,31 @@ img{max-width:100%;display:block}
 .luxury-hero .slide-media{position:absolute; inset:0}
 .luxury-hero .slide-media img{
   position:absolute; inset:0; width:100%; height:100%; object-fit:cover; 
-  transform:scale(1.08); transition:transform 8s cubic-bezier(.25,.46,.45,.94); filter:brightness(1.1) contrast(1.05);
+  transform:scale(1.08); transition:transform 8s cubic-bezier(.25,.46,.45,.94); filter:brightness(1.05) contrast(1.03);
 }
 .luxury-hero .swiper-slide-active .slide-media img{transform:scale(1.18)}
 .hero-layer{position:absolute; inset:0; pointer-events:none}
-.hero-gradient{
+
+/* MINIMAL DARK GRADIENT - ONLY FOR TEXT READABILITY (NO WHITE) */
+.hero-gradient-minimal{
   background:
-   radial-gradient(1400px 800px at 20% 25%, rgba(168,216,234,.25), transparent 60%),
-   linear-gradient(115deg, rgba(255,248,240,.85) 0%, rgba(168,216,234,.4) 40%, rgba(78,159,209,.5) 70%, rgba(10,10,10,.75) 100%);
+   radial-gradient(800px 500px at 30% 40%, rgba(0,0,0,0.1), transparent 70%),
+   linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, transparent 40%, rgba(0,0,0,0.25) 100%);
 }
-.hero-vignette{
-  background:radial-gradient(110% 110% at 50% 85%, rgba(10,10,10,0) 0%, rgba(168,216,234,.25) 55%, rgba(10,10,10,.7) 100%);
-}
+
 .hero-content-wrap{position:relative; z-index:2; width:100%; display:grid; place-items:center}
 .hero-content{
   text-align:left; width:100%; max-width:1100px; padding:28px;
-  background:rgba(255,248,240,.92); border:2px solid rgba(168,216,234,.4);
-  border-radius:24px; backdrop-filter:blur(12px); box-shadow:0 20px 60px rgba(168,216,234,.2);
+  /* FULLY TRANSPARENT BACKGROUND - Only subtle blur */
+  background:rgba(255,248,240,.5); /* Reduced from .75 to .5 */
+  border:2px solid rgba(168,216,234,.25);
+  border-radius:24px; backdrop-filter:blur(20px); /* Increased blur for better text readability */
+  box-shadow:0 20px 60px rgba(0,0,0,.1);
   position:relative; overflow:hidden;
 }
 .hero-content::before{
   content:''; position:absolute; top:-50%; right:-50%; width:200%; height:200%;
-  background:conic-gradient(from 0deg at 50% 50%, transparent, rgba(168,216,234,.15), transparent 30%);
+  background:conic-gradient(from 0deg at 50% 50%, transparent, rgba(168,216,234,.08), transparent 30%);
   animation:rotate 20s linear infinite; pointer-events:none;
 }
 @keyframes rotate{to{transform:rotate(360deg)}}
@@ -418,7 +401,7 @@ section{padding:80px 18px; position:relative; z-index:1}
 .scroll-top.visible{opacity:1; visibility:visible}
 .scroll-top:hover{background:var(--gold-accent); transform:translateY(-4px)}
 
-/* TEXT ANIMATION (letter-by-letter reveal) */
+/* TEXT ANIMATION */
 .split-text .char{
   display:inline-block; opacity:0; transform:translateY(30px); transition:all .5s cubic-bezier(.25,.46,.45,.94);
 }
@@ -447,22 +430,3 @@ section{padding:80px 18px; position:relative; z-index:1}
 ::-webkit-scrollbar-track{background:var(--pearl-cream)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--crystal-blue), var(--crystal-mid)); border-radius:6px}
 ::selection{background:var(--crystal-blue); color:var(--white)}
-/* ... (Previous CSS remains same) ... */
-
-/* HERO TRANSPARENT BACKGROUND UPDATE */
-.hero-gradient-subtle{
-  /* Removed heavy white overlay - Only subtle gradient for text readability */
-  background:
-   radial-gradient(1000px 600px at 30% 40%, rgba(0,0,0,0.15), transparent 60%),
-   linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, transparent 50%, rgba(0,0,0,0.3) 100%);
-}
-
-.hero-content{
-  /* Made content card more transparent */
-  background:rgba(255,248,240,.75); /* Reduced from .92 to .75 */
-  border:2px solid rgba(168,216,234,.3);
-  border-radius:24px; backdrop-filter:blur(16px); /* Increased blur */
-  box-shadow:0 20px 60px rgba(0,0,0,.15);
-}
-
-/* Rest of CSS remains same as previous version */
