@@ -13,7 +13,6 @@ menuToggle.addEventListener('click', () => {
   icon.classList.toggle('fa-bars');
   icon.classList.toggle('fa-times');
 });
-// Close on link click
 document.querySelectorAll('.nav-menu a').forEach(link => {
   link.addEventListener('click', () => {
     navMenu.classList.remove('active');
@@ -73,19 +72,22 @@ document.getElementById('bookingForm').addEventListener('submit', e => {
 // Set min date to today
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-// HERO: Auto background slider (2s)
-// Paste your imgbb DIRECT links below (start with https://i.ibb.co/... and end with .jpg/.png)
+// HERO: Auto background slider (2s) — imgbb direct links
 const heroImages = [
-  'REPLACE_HERO_1_INTERIOR',
-  'REPLACE_HERO_2_WORK',
-  'REPLACE_HERO_3_INTERIOR',
-  'REPLACE_HERO_4_BRIDAL',
-  'REPLACE_HERO_5_BLOW'
+  // Interior/ambience
+  'https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg',
+  // Haircut moment
+  'https://i.ibb.co/C5YDRSLB/photo-1695527081848-1e46c06e6458-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg',
+  // Blow dry
+  'https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg',
+  // Bridal
+  'https://i.ibb.co/fV6vBXS6/photo-1549236177-f9b0031756eb-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ixlib.jpg',
+  // Stylist at work / portrait
+  'https://i.ibb.co/WW4BTgzf/premium-photo-1676677522880-639b99b1f27b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg'
 ];
-// Fallback image if any link fails
-const heroFallback = 'https://i.imgur.com/1Zb2t5k.jpeg';
-
+const heroFallback = 'https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg';
 const hero = document.querySelector('.hero');
+
 function setHeroBgFrom(url) {
   const img = new Image();
   img.onload = () => {
@@ -97,7 +99,6 @@ function setHeroBgFrom(url) {
   img.src = url;
 }
 
-// Start slider
 let heroIndex = 0;
 setHeroBgFrom(heroImages[heroIndex] || heroFallback);
 setInterval(() => {
