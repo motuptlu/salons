@@ -46,50 +46,60 @@
     </div>
   </nav>
 
-  <!-- HERO 2.0 (Cinematic) -->
-  <section class="hero luxe-hero" id="home">
-    <div class="hero-slider swiper" aria-label="Salon visual showcase">
+  <!-- HERO Pro (Cinematic + Premium) -->
+  <section class="hero pro-hero" id="home">
+    <!-- Background slider -->
+    <div class="hero-swiper swiper" aria-label="Luxury salon showcase">
       <div class="swiper-wrapper">
-        <!-- Slide 1: Luxurious interior -->
+        <!-- Slide 1: Interior (golden hour) -->
         <div class="swiper-slide">
-          <picture class="slide-media">
-            <img
-              src="https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg"
-              alt="Luxurious modern salon interior during golden hour" loading="eager" decoding="async">
-          </picture>
+          <div class="slide-media">
+            <img src="https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg" alt="Luxurious salon interior golden hour">
+          </div>
         </div>
-        <!-- Slide 2: Blow-dry glam -->
+        <!-- Slide 2: Blow-dry glamour -->
         <div class="swiper-slide">
-          <picture class="slide-media">
-            <img
-              src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg"
-              alt="Glamorous blow-dry styling with glossy hair highlights" loading="lazy" decoding="async">
-          </picture>
+          <div class="slide-media">
+            <img src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg" alt="Glamorous blow-dry styling with glossy hair">
+          </div>
+        </div>
+        <!-- Slide 3: Bridal elegance -->
+        <div class="swiper-slide">
+          <div class="slide-media">
+            <img src="https://i.ibb.co/wh3MRWvb/photo-1610047614301-13c63f00c032-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk1f-A-ix.jpg" alt="Bridal hair & makeup elegance">
+          </div>
         </div>
       </div>
-      <div class="hero-gradient"></div>
-      <div class="hero-pagination swiper-pagination" aria-label="Hero pagination"></div>
+
+      <!-- Layers -->
+      <div class="hero-layer hero-gradient"></div>
+      <div class="hero-layer hero-vignette"></div>
+
+      <!-- Pagination + Arrows -->
+      <div class="hero-pagination swiper-pagination" aria-label="Slide pagination"></div>
+      <button class="hero-nav hero-prev" aria-label="Previous slide"><i class="fa-solid fa-arrow-left"></i></button>
+      <button class="hero-nav hero-next" aria-label="Next slide"><i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <!-- Overlay content -->
-    <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
-      <span class="eyebrow">Kamla Nagar • Delhi</span>
-      <h1>Indulge in Timeless Beauty</h1>
-      <p>Luxury haircuts, colour, spa rituals & bridal glam — crafted for confidence.</p>
-      <div class="hero-ctas">
-        <a href="#booking" class="btn"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
-        <a href="#services" class="btn btn-outline">Explore Services</a>
-      </div>
-      <div class="hero-trust">
-        <span><i class="fas fa-star"></i> 5.0 Rated</span>
-        <span>5k+ Clients</span>
-        <span>Dyson • Oribe Care</span>
+    <!-- Content -->
+    <div class="hero-content-wrap">
+      <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+        <span class="eyebrow">Premium Salon & Spa • Kamla Nagar</span>
+        <h1>Luxury Hair. Timeless Glow.</h1>
+        <p>Signature haircuts, couture colour, spa rituals & bridal glam — crafted for confidence.</p>
+        <div class="hero-ctas">
+          <a href="#booking" class="btn"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+          <a href="#services" class="btn btn-outline">Explore Services</a>
+        </div>
+        <div class="hero-trust">
+          <span><i class="fa-solid fa-star"></i> 5.0 Rated</span>
+          <span>5k+ Clients</span>
+          <span>Dyson • Oribe Care</span>
+        </div>
       </div>
     </div>
 
-    <div class="scroll-hint" aria-hidden="true">
-      <span class="dot"></span> Scroll
-    </div>
+    <div class="scroll-hint" aria-hidden="true"><span class="dot"></span> Scroll</div>
   </section>
 
   <!-- GALLERY -->
