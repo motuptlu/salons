@@ -2,26 +2,18 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
 // AOS init
-AOS.init({
-  duration: 1000,
-  once: false,
-  mirror: true,
-  offset: 100,
-  easing: 'ease-in-out'
-});
+AOS.init({ duration: 1000, once: false, mirror: true, offset: 100, easing: 'ease-in-out' });
 
 // Mobile Menu
 const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
-
 menuToggle.addEventListener('click', () => {
   navMenu.classList.toggle('active');
   const icon = menuToggle.querySelector('i');
   icon.classList.toggle('fa-bars');
   icon.classList.toggle('fa-times');
 });
-
-// Close menu on link click
+// Close on link click
 document.querySelectorAll('.nav-menu a').forEach(link => {
   link.addEventListener('click', () => {
     navMenu.classList.remove('active');
@@ -36,29 +28,24 @@ window.addEventListener('scroll', () => {
   else navbar.classList.remove('scrolled');
 });
 
-// Scroll to top visibility
+// Scroll to top
 const scrollTopBtn = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 500) scrollTopBtn.classList.add('visible');
   else scrollTopBtn.classList.remove('visible');
 });
-scrollTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e){
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 });
 
-// Booking Form → WhatsApp automation
-document.getElementById('bookingForm').addEventListener('submit', (e) => {
+// Booking → WhatsApp
+document.getElementById('bookingForm').addEventListener('submit', e => {
   e.preventDefault();
   const data = {
     name: document.getElementById('name').value.trim(),
@@ -69,12 +56,9 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
     time: document.getElementById('time').value,
     notes: document.getElementById('notes').value.trim()
   };
-
   if (!data.name || !data.email || !data.phone || !data.service || !data.date || !data.time) {
-    alert('Please fill all required fields.');
-    return;
+    return alert('Please fill all required fields.');
   }
-
   const msg = `Hi The Hair Direction Salon!%0A%0A✨ NEW BOOKING ✨%0A%0A` +
               `👤 Name: ${encodeURIComponent(data.name)}%0A` +
               `📧 Email: ${encodeURIComponent(data.email)}%0A` +
@@ -89,25 +73,34 @@ document.getElementById('bookingForm').addEventListener('submit', (e) => {
 // Set min date to today
 document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-// Refresh AOS on scroll (keeps animations alive)
-window.addEventListener('scroll', () => AOS.refresh());
-
-// HERO: auto background slider (2s)
-const hero = document.querySelector('.hero');
+// HERO: Auto background slider (2s)
+// Paste your imgbb DIRECT links below (start with https://i.ibb.co/... and end with .jpg/.png)
 const heroImages = [
-  'https://unsplash.com/photos/_C-S7LqxHPw/download?force=true&w=1920',
-  'https://unsplash.com/photos/ZY45fhFPYqM/download?force=true&w=1920',
-  'https://unsplash.com/photos/To-l8M2NCso/download?force=true&w=1920',
-  'https://unsplash.com/photos/PnDr2j28gXA/download?force=true&w=1920',
-  'https://unsplash.com/photos/LGXN4OSQSa4/download?force=true&w=1920'
+  'REPLACE_HERO_1_INTERIOR',
+  'REPLACE_HERO_2_WORK',
+  'REPLACE_HERO_3_INTERIOR',
+  'REPLACE_HERO_4_BRIDAL',
+  'REPLACE_HERO_5_BLOW'
 ];
+// Fallback image if any link fails
+const heroFallback = 'https://i.imgur.com/1Zb2t5k.jpeg';
 
-let heroIndex = 0;
-function setHeroBg(idx){
-  hero.style.background = `linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('${heroImages[idx]}') center/cover no-repeat`;
+const hero = document.querySelector('.hero');
+function setHeroBgFrom(url) {
+  const img = new Image();
+  img.onload = () => {
+    hero.style.background = `linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('${url}') center/cover no-repeat`;
+  };
+  img.onerror = () => {
+    hero.style.background = `linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('${heroFallback}') center/cover no-repeat`;
+  };
+  img.src = url;
 }
-setHeroBg(heroIndex);
+
+// Start slider
+let heroIndex = 0;
+setHeroBgFrom(heroImages[heroIndex] || heroFallback);
 setInterval(() => {
   heroIndex = (heroIndex + 1) % heroImages.length;
-  setHeroBg(heroIndex);
+  setHeroBgFrom(heroImages[heroIndex] || heroFallback);
 }, 2000);
