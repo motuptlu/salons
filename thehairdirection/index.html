@@ -14,12 +14,13 @@
   <!-- Speed: Preload first hero image -->
   <link rel="preload" as="image" href="https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg">
 
-  <!-- Fonts + Icons + AOS -->
+  <!-- Fonts + Icons + AOS + Swiper -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -45,16 +46,49 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1 data-aos="zoom-in" data-aos-duration="900">THE HAIR DIRECTION SALON</h1>
-      <h2 data-aos="fade-up" data-aos-duration="900" data-aos-delay="150">Premium Hair & Beauty Studio</h2>
-      <p data-aos="fade-up" data-aos-duration="900" data-aos-delay="300">Kamla Nagar, Delhi</p>
-      <div class="hero-buttons" data-aos="fade-up" data-aos-duration="900" data-aos-delay="450">
-        <a href="#booking" class="btn" role="button">Book Appointment</a>
-        <a href="#services" class="btn btn-outline" role="button">Our Services</a>
+  <!-- HERO 2.0 (Cinematic) -->
+  <section class="hero luxe-hero" id="home">
+    <div class="hero-slider swiper" aria-label="Salon visual showcase">
+      <div class="swiper-wrapper">
+        <!-- Slide 1: Luxurious interior -->
+        <div class="swiper-slide">
+          <picture class="slide-media">
+            <img
+              src="https://i.ibb.co/0RQXHHwQ/premium-photo-1664048712492-9d395c204e37-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mz.jpg"
+              alt="Luxurious modern salon interior during golden hour" loading="eager" decoding="async">
+          </picture>
+        </div>
+        <!-- Slide 2: Blow-dry glam -->
+        <div class="swiper-slide">
+          <picture class="slide-media">
+            <img
+              src="https://i.ibb.co/9H458Czv/photo-1599351431408-433ef72fe40b-ixid-M3wx-Mj-A3f-DB8-MXxhb-Gx8f-Hx8f-Hx8f-Hwx-Nz-Yw-NTU1-Mzk2f-A-ix.jpg"
+              alt="Glamorous blow-dry styling with glossy hair highlights" loading="lazy" decoding="async">
+          </picture>
+        </div>
       </div>
+      <div class="hero-gradient"></div>
+      <div class="hero-pagination swiper-pagination" aria-label="Hero pagination"></div>
+    </div>
+
+    <!-- Overlay content -->
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+      <span class="eyebrow">Kamla Nagar • Delhi</span>
+      <h1>Indulge in Timeless Beauty</h1>
+      <p>Luxury haircuts, colour, spa rituals & bridal glam — crafted for confidence.</p>
+      <div class="hero-ctas">
+        <a href="#booking" class="btn"><i class="fab fa-whatsapp"></i> Book on WhatsApp</a>
+        <a href="#services" class="btn btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-trust">
+        <span><i class="fas fa-star"></i> 5.0 Rated</span>
+        <span>5k+ Clients</span>
+        <span>Dyson • Oribe Care</span>
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="dot"></span> Scroll
     </div>
   </section>
 
@@ -486,7 +520,8 @@
   </button>
 
   <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="js/main.js"></script>
+  <script defer src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 </html>
