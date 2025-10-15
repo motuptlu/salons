@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - The Hair Direction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <i class="fas fa-lock"></i>
+        <h2>Admin Panel</h2>
+        <p>The Hair Direction Salon</p>
+      </div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="loginUsername" placeholder="Enter username" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn-login">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+        <p class="login-hint">Default: thehairdirection6000 / thehairdirection6000</p>
+      </form>
+      <div id="loginError" class="error-msg" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+  <div id="adminDashboard" class="admin-dashboard" style="display:none">
+    
+    <!-- HEADER -->
+    <header class="admin-header">
+      <div class="header-left">
+        <h1><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h1>
+      </div>
+      <div class="header-right">
+        <a href="index.html" target="_blank" class="btn-preview"><i class="fas fa-eye"></i> Preview Site</a>
+        <button id="logoutBtn" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <nav>
+        <button class="nav-btn active" data-section="hero"><i class="fas fa-image"></i> Hero Section</button>
+        <button class="nav-btn" data-section="about"><i class="fas fa-info-circle"></i> About Section</button>
+        <button class="nav-btn" data-section="services"><i class="fas fa-cut"></i> Services</button>
+        <button class="nav-btn" data-section="gallery"><i class="fas fa-images"></i> Gallery</button>
+        <button class="nav-btn" data-section="reviews"><i class="fas fa-star"></i> Reviews</button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      
+      <!-- HERO SECTION EDITOR -->
+      <section id="sectionHero" class="editor-section active">
+        <h2><i class="fas fa-image"></i> Hero Section</h2>
+        
+        <div class="editor-card">
+          <h3>Hero Text Content</h3>
+          <div class="form-group">
+            <label>Eyebrow Text</label>
+            <input type="text" id="heroEyebrowInput" placeholder="Premium Salon & Spa • Kamla Nagar">
+          </div>
+          <div class="form-group">
+            <label>Main Title</label>
+            <input type="text" id="heroTitleInput" placeholder="Luxury Hair. Timeless Glow.">
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea id="heroDescInput" rows="3" placeholder="Signature haircuts, couture colour..."></textarea>
+          </div>
+          <button class="btn-save" onclick="saveHeroText()"><i class="fas fa-save"></i> Save Text</button>
+        </div>
+
+        <div class="editor-card">
+          <h3>Hero Background Images (6 images)</h3>
+          <div id="heroImagesContainer"></div>
+          <button class="btn-add" onclick="addHeroImage()"><i class="fas fa-plus"></i> Add Image</button>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION EDITOR -->
+      <section id="sectionAbout" class="editor-section">
+        <h2><i class="fas fa-info-circle"></i> About Section</h2>
+        
+        <div class="editor-card">
+          <div class="form-group">
+            <label>Subtitle</label>
+            <input type="text" id="aboutSubtitleInput" placeholder="Our Craft">
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="aboutTitleInput" placeholder="PREMIUM HAIR IN KAMLA NAGAR">
+          </div>
+          <div class="form-group">
+            <label>Description 1</label>
+            <textarea id="aboutDesc1Input" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Description 2</label>
+            <textarea id="aboutDesc2Input" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>About Image URL</label>
+            <input type="url" id="aboutImageInput" placeholder="https://example.com/image.jpg">
+          </div>
+          <button class="btn-save" onclick="saveAbout()"><i class="fas fa-save"></i> Save About</button>
+        </div>
+      </section>
+
+      <!-- SERVICES EDITOR -->
+      <section id="sectionServices" class="editor-section">
+        <h2><i class="fas fa-cut"></i> Services Management</h2>
+        <div id="servicesEditorContainer"></div>
+        <button class="btn-add" onclick="addService()"><i class="fas fa-plus"></i> Add Service</button>
+      </section>
+
+      <!-- GALLERY EDITOR -->
+      <section id="sectionGallery" class="editor-section">
+        <h2><i class="fas fa-images"></i> Gallery Management</h2>
+        <div id="galleryEditorContainer"></div>
+        <button class="btn-add" onclick="addGalleryItem()"><i class="fas fa-plus"></i> Add Gallery Image</button>
+      </section>
+
+      <!-- REVIEWS EDITOR -->
+      <section id="sectionReviews" class="editor-section">
+        <h2><i class="fas fa-star"></i> Reviews Management</h2>
+        <div id="reviewsEditorContainer"></div>
+        <button class="btn-add" onclick="addReview()"><i class="fas fa-plus"></i> Add Review</button>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
