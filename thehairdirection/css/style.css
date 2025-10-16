@@ -692,3 +692,90 @@ section{padding:80px 18px; position:relative; z-index:1}
 .pro-hero .hero-pagination .swiper-pagination-bullet-active{
   background: var(--sky);
 }
+/* ===== HERO COLOR FIX PACK — Sky blue text + remove yellow → dark black ===== */
+:root{
+  --sky: #8FD3FF;      /* premium sky blue for heading */
+  --sky-soft: #CFEAFF; /* soft sky for eyebrow/accents */
+}
+
+/* Remove warm/yellow tint from hero overlay and make it neutral-cinematic */
+.pro-hero .hero-gradient{
+  background:
+    radial-gradient(1100px 650px at 15% 20%, rgba(255,255,255,.06), transparent 55%),
+    linear-gradient(110deg, rgba(0,0,0,.66) 0%, rgba(0,0,0,.38) 38%, rgba(0,0,0,.58) 65%, rgba(0,0,0,.80) 100%);
+}
+
+/* Headline + texts */
+.pro-hero .hero-content h1{
+  color: var(--sky);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25), 0 10px 34px rgba(143,211,255,.25);
+}
+.pro-hero .hero-content .eyebrow{ color: var(--sky-soft); }
+.pro-hero .hero-content p{ color: rgba(245,247,250,.95); }
+
+/* CTAs: make hero buttons black (no yellow) */
+.pro-hero .hero-ctas .btn{
+  background: #0B0B0B;
+  color: #FFFFFF;
+  border: 1px solid #000000;
+  box-shadow: 0 10px 26px rgba(0,0,0,.45);
+}
+.pro-hero .hero-ctas .btn:hover{
+  background: #111111;
+  transform: translateY(-2px);
+}
+.pro-hero .hero-ctas .btn.btn-outline{
+  background: rgba(0,0,0,.45);
+  color: #FFFFFF;
+  border: 1px solid #000000;
+}
+.pro-hero .hero-ctas .btn.btn-outline:hover{
+  background: #0B0B0B;
+}
+
+/* Trust badges: dark black chips (remove yellow) */
+.pro-hero .hero-trust span{
+  background: rgba(0,0,0,.45);
+  border: 1px solid #000000;
+  color: #EDEFF2;
+}
+.pro-hero .hero-trust i{ color: #EDEFF2; }
+
+/* Arrows: black buttons, white icons */
+.pro-hero .hero-nav{
+  border-color:#000000 !important;
+  background: #0B0B0B !important;
+  color:#FFFFFF !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.45);
+}
+.pro-hero .hero-nav:hover{ background:#121212 !important; }
+
+/* Pagination bullets: neutral with black ring, active = sky */
+.pro-hero .hero-pagination .swiper-pagination-bullet{
+  background: rgba(255,255,255,.55);
+  border: 1px solid #000000;
+  opacity: 1;
+}
+.pro-hero .hero-pagination .swiper-pagination-bullet-active{
+  background: var(--sky);
+  border-color: #000000;
+}
+
+/* Glass card: dark black border for premium look */
+.pro-hero .hero-content{
+  border-color: #000000;
+  box-shadow: 0 12px 34px rgba(0,0,0,.35);
+}
+
+/* Scroll hint dot = sky (subtle) */
+.pro-hero .scroll-hint .dot{
+  background: var(--sky);
+  box-shadow: 0 0 0 0 rgba(143,211,255,.45);
+}
+
+/* Make sure any leftover brand (yellow/orange) doesn't leak into hero */
+.pro-hero [style*="--brand"], 
+.pro-hero .hero-trust span[style*="--brand"],
+.pro-hero .hero-pagination .swiper-pagination-bullet[style*="--brand"]{
+  --brand: #000000;
+}
