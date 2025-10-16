@@ -654,3 +654,41 @@ section{padding:80px 18px; position:relative; z-index:1}
 ::-webkit-scrollbar-track{background:var(--pearl-cream)}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--crystal-blue), var(--crystal-mid)); border-radius:6px}
 ::selection{background:var(--crystal-blue); color:var(--white)}
+/* ===== Hero tweaks: Sky blue heading + Dark black borders ===== */
+:root{
+  --sky:#8FD3FF;     /* premium sky blue */
+  --sky-soft:#BFE8FF;
+}
+
+/* H1 color (Luxury Hair. Timeless Glow.) */
+.pro-hero .hero-content h1{
+  color: var(--sky);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25), 0 8px 30px rgba(143,211,255,.25);
+}
+
+/* Glass card border -> dark black */
+.pro-hero .hero-content{
+  border-color:#000000;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* Trust badges border -> dark black */
+.pro-hero .hero-trust span{
+  border-color:#000000;
+  background: rgba(0,0,0,.28);
+}
+
+/* Slider arrows border -> dark black */
+.pro-hero .hero-nav{
+  border-color:#000000;
+  background: rgba(0,0,0,.45);
+}
+
+/* Pagination bullets: add black border, active = sky for premium look */
+.pro-hero .hero-pagination .swiper-pagination-bullet{
+  border: 1px solid #000000;
+  background: rgba(255,255,255,.55);
+}
+.pro-hero .hero-pagination .swiper-pagination-bullet-active{
+  background: var(--sky);
+}
