@@ -12,11 +12,12 @@
   --dark:#1a1a1a;
   --white:#FFFFFF;
   
-  /* Black & Gold Theme */
-  --pure-black:#000000;
-  --dark-gold:#DAA520;
-  --bright-gold:#FFD700;
-  --rich-gold:#8B7500;
+  /* Premium Dark Sky Colors */
+  --primary-dark-sky:#1e3a5f;
+  --midnight-sky:#0f1419;
+  --mid-sky:#2c5f8d;
+  --light-sky:#3a7ca5;
+  --gold-star:#ffd700;
   
   /* Shimmer */
   --shimmer-gradient: linear-gradient(110deg, transparent 25%, rgba(255,255,255,.3) 50%, transparent 75%);
@@ -165,7 +166,7 @@ img{max-width:100%;display:block}
   background:transparent;
 }
 
-/* ========== HERO CONTENT - BLACK & GOLD THEME ========== */
+/* ========== HERO CONTENT - DARK SKY BLUE THEME ========== */
 .hero-content-wrap{position:relative; z-index:2; width:100%; display:grid; place-items:center}
 
 .hero-content{
@@ -182,53 +183,59 @@ img{max-width:100%;display:block}
 
 .hero-content::before{display:none}
 
-/* BLACK & GOLD - Eyebrow */
+/* DARK SKY BLUE - Eyebrow */
 .hero-content .eyebrow{
   display:inline-block; 
   letter-spacing:3px; 
   text-transform:uppercase; 
   font-size:.95rem; 
-  color:var(--pure-black);
+  /* Primary Dark Sky Color */
+  color:var(--primary-dark-sky);
   font-weight:800; 
   position:relative; 
   z-index:1;
+  /* Subtle glow for visibility */
   text-shadow:
-    0 0 10px rgba(255,215,0,.8),
-    0 0 20px rgba(255,215,0,.6),
-    2px 2px 4px rgba(0,0,0,.3);
+    0 0 8px rgba(255,255,255,.6),
+    0 0 15px rgba(58,122,165,.5),
+    2px 2px 4px rgba(15,20,25,.4);
   background:none;
   padding:0;
 }
 
-/* BLACK TO GOLD GRADIENT - Main Title */
+/* DARK SKY GRADIENT - Main Title "Luxury Hair. Timeless Glow." */
 .hero-content h1{
   font-family:'Cormorant Garamond',serif; 
   font-weight:900; 
   letter-spacing:3px; 
   margin:12px 0 16px; 
   font-size:clamp(2.8rem,8vw,5.5rem); 
-  background:linear-gradient(135deg, var(--pure-black), var(--rich-gold), var(--bright-gold), var(--dark-gold));
+  /* Midnight Sky → Primary → Mid → Light Sky → Gold Gradient */
+  background:linear-gradient(135deg, var(--midnight-sky), var(--primary-dark-sky), var(--mid-sky), var(--light-sky), var(--gold-star));
   -webkit-background-clip:text; 
   -webkit-text-fill-color:transparent; 
   position:relative; 
   z-index:1;
-  filter:drop-shadow(0 0 15px rgba(255,215,0,.7)) drop-shadow(0 4px 8px rgba(0,0,0,.5));
+  /* Strong glow effect for visibility */
+  filter:drop-shadow(0 0 12px rgba(58,122,165,.7)) drop-shadow(0 4px 8px rgba(15,20,25,.5));
 }
 
-/* PURE BLACK - Description */
+/* DARK SKY BLUE - Description */
 .hero-content p{
-  color:var(--pure-black);
+  /* Primary Dark Sky Color */
+  color:var(--primary-dark-sky);
   margin:0 0 20px; 
   font-size:clamp(1.1rem,3vw,1.4rem); 
   position:relative; 
   z-index:1;
   font-weight:700;
   line-height:1.9;
+  /* White & Sky Blue glow for visibility */
   text-shadow:
-    0 0 10px rgba(255,215,0,.9),
-    0 0 20px rgba(255,215,0,.7),
-    0 0 30px rgba(255,215,0,.5),
-    2px 2px 6px rgba(0,0,0,.4);
+    0 0 10px rgba(255,255,255,.8),
+    0 0 20px rgba(168,216,234,.6),
+    0 0 30px rgba(58,122,165,.4),
+    2px 2px 6px rgba(15,20,25,.3);
   background:none;
   padding:0;
 }
@@ -242,20 +249,21 @@ img{max-width:100%;display:block}
   margin-top:10px;
 }
 
-/* BLACK BG + GOLD TEXT - Primary Button */
+/* DARK SKY BG + GOLD TEXT - Primary Button */
 .hero-ctas .pearl-btn{
-  background:linear-gradient(135deg, var(--pure-black), #1a1a1a);
-  color:var(--bright-gold);
+  /* Dark Sky Gradient Background */
+  background:linear-gradient(135deg, var(--midnight-sky), var(--primary-dark-sky));
+  color:var(--gold-star);
   padding:15px 30px;
   font-size:13px;
   text-transform:uppercase;
   letter-spacing:2.5px;
   font-weight:800;
   border-radius:50px;
-  border:3px solid var(--bright-gold);
+  border:3px solid var(--gold-star);
   box-shadow:
-    0 0 20px rgba(255,215,0,.6),
-    0 6px 20px rgba(0,0,0,.4);
+    0 0 20px rgba(255,215,0,.5),
+    0 6px 20px rgba(30,58,95,.4);
   transition:all .3s ease;
   text-decoration:none;
   display:inline-flex;
@@ -269,7 +277,7 @@ img{max-width:100%;display:block}
   content:''; 
   position:absolute; 
   inset:0; 
-  background:linear-gradient(110deg, transparent 25%, rgba(255,215,0,.3) 50%, transparent 75%);
+  background:linear-gradient(110deg, transparent 25%, rgba(255,215,0,.2) 50%, transparent 75%);
   transform:translateX(-100%); 
   transition:transform .6s;
   background-size:200% 100%;
@@ -279,20 +287,21 @@ img{max-width:100%;display:block}
 .hero-ctas .pearl-btn:hover::before{transform:translateX(100%)}
 
 .hero-ctas .pearl-btn:hover{
-  background:linear-gradient(135deg, var(--bright-gold), var(--dark-gold));
-  color:var(--pure-black);
+  background:linear-gradient(135deg, var(--mid-sky), var(--light-sky));
+  color:var(--white);
   transform:translateY(-3px);
   box-shadow:
-    0 0 30px rgba(255,215,0,.9),
-    0 10px 30px rgba(0,0,0,.5);
-  border-color:var(--pure-black);
+    0 0 30px rgba(58,122,165,.8),
+    0 10px 30px rgba(30,58,95,.5);
+  border-color:var(--white);
 }
 
-/* GOLD BG + BLACK TEXT - Outline Button */
+/* LIGHT SKY BG + DARK TEXT - Outline Button */
 .hero-ctas .btn-outline-pearl{
-  background:linear-gradient(135deg, var(--bright-gold), var(--dark-gold));
-  border:3px solid var(--pure-black);
-  color:var(--pure-black);
+  /* Light Sky Gradient */
+  background:linear-gradient(135deg, var(--light-sky), var(--mid-sky));
+  border:3px solid var(--midnight-sky);
+  color:var(--white);
   padding:15px 30px;
   font-size:13px;
   font-weight:800;
@@ -303,21 +312,21 @@ img{max-width:100%;display:block}
   align-items:center;
   gap:10px;
   box-shadow:
-    0 0 20px rgba(255,215,0,.5),
-    0 4px 12px rgba(0,0,0,.3);
+    0 0 20px rgba(58,122,165,.4),
+    0 4px 12px rgba(30,58,95,.3);
 }
 
 .hero-ctas .btn-outline-pearl:hover{
-  background:linear-gradient(135deg, var(--pure-black), #1a1a1a);
-  color:var(--bright-gold);
-  border-color:var(--bright-gold);
+  background:linear-gradient(135deg, var(--midnight-sky), var(--primary-dark-sky));
+  color:var(--gold-star);
+  border-color:var(--gold-star);
   transform:translateY(-3px);
   box-shadow:
-    0 0 30px rgba(255,215,0,.8),
-    0 10px 30px rgba(0,0,0,.5);
+    0 0 30px rgba(255,215,0,.6),
+    0 10px 30px rgba(30,58,95,.5);
 }
 
-/* BLACK BG + GOLD TEXT - Trust Badges */
+/* DARK SKY BG + GOLD TEXT - Trust Badges */
 .hero-trust{
   display:flex; 
   gap:14px; 
@@ -329,46 +338,48 @@ img{max-width:100%;display:block}
 
 .hero-trust span{
   font-size:1rem; 
-  color:var(--bright-gold); 
-  background:linear-gradient(135deg, var(--pure-black), #1a1a1a);
-  border:2px solid var(--bright-gold); 
+  /* Gold text on dark sky background */
+  color:var(--gold-star); 
+  background:linear-gradient(135deg, var(--midnight-sky), var(--primary-dark-sky));
+  border:2px solid var(--gold-star); 
   padding:10px 20px; 
   border-radius:999px; 
   font-weight:700;
   box-shadow:
-    0 0 15px rgba(255,215,0,.5),
-    0 4px 12px rgba(0,0,0,.3);
+    0 0 15px rgba(255,215,0,.4),
+    0 4px 12px rgba(30,58,95,.3);
   transition:all .3s ease;
 }
 
 .hero-trust span:hover{
-  background:linear-gradient(135deg, var(--bright-gold), var(--dark-gold));
-  color:var(--pure-black);
+  background:linear-gradient(135deg, var(--mid-sky), var(--light-sky));
+  color:var(--white);
   transform:translateY(-2px);
   box-shadow:
-    0 0 25px rgba(255,215,0,.8),
-    0 6px 18px rgba(0,0,0,.4);
-  border-color:var(--pure-black);
+    0 0 25px rgba(58,122,165,.7),
+    0 6px 18px rgba(30,58,95,.4);
+  border-color:var(--white);
 }
 
 .hero-trust i{
-  color:var(--bright-gold);
+  /* Gold Star */
+  color:var(--gold-star);
   filter:drop-shadow(0 0 5px rgba(255,215,0,.8));
 }
 
-/* Hero Pagination & Navigation - BLACK & GOLD */
+/* Hero Pagination & Navigation - DARK SKY THEME */
 .hero-pagination{position:absolute; left:0; right:0; bottom:20px !important; z-index:2}
 .hero-pagination .swiper-pagination-bullet{
-  background:rgba(255,215,0,.6); 
+  background:rgba(58,122,165,.6); 
   opacity:1; 
   width:12px; 
   height:12px; 
   margin:0 6px; 
   transition:.3s;
-  border:2px solid var(--pure-black);
+  border:2px solid var(--midnight-sky);
 }
 .hero-pagination .swiper-pagination-bullet-active{
-  background:var(--bright-gold); 
+  background:var(--gold-star); 
   transform:scale(1.4);
   box-shadow:0 0 15px rgba(255,215,0,.8);
 }
@@ -376,40 +387,42 @@ img{max-width:100%;display:block}
 .hero-nav{
   position:absolute; bottom:20px; left:20px; z-index:2;
   width:52px; height:52px; border-radius:50%; 
-  border:3px solid var(--bright-gold);
-  background:rgba(0,0,0,.85); 
-  color:var(--bright-gold); 
+  border:3px solid var(--gold-star);
+  /* Dark Sky Background */
+  background:rgba(15,20,25,.85); 
+  color:var(--gold-star); 
   display:grid; place-items:center; 
   cursor:pointer; transition:.3s; 
   box-shadow:
-    0 0 20px rgba(255,215,0,.5),
-    0 4px 15px rgba(0,0,0,.4);
+    0 0 20px rgba(255,215,0,.4),
+    0 4px 15px rgba(30,58,95,.4);
 }
 .hero-prev{transform:translateX(0)}
 .hero-next{left:80px}
 .hero-nav:hover{
-  background:var(--bright-gold); 
-  color:var(--pure-black); 
+  background:var(--light-sky); 
+  color:var(--white); 
   transform:scale(1.15);
   box-shadow:
-    0 0 30px rgba(255,215,0,.9),
-    0 8px 20px rgba(0,0,0,.5);
-  border-color:var(--pure-black);
+    0 0 30px rgba(58,122,165,.8),
+    0 8px 20px rgba(30,58,95,.5);
+  border-color:var(--white);
 }
 
 .scroll-hint{
   position:absolute; bottom:18px; right:18px; 
-  color:var(--pure-black); 
+  /* Primary Dark Sky Color */
+  color:var(--primary-dark-sky); 
   display:flex; align-items:center; 
   gap:8px; z-index:2; font-size:1rem; font-weight:700;
   text-shadow:
-    0 0 10px rgba(255,215,0,.8),
-    2px 2px 4px rgba(0,0,0,.3);
+    0 0 10px rgba(255,255,255,.8),
+    2px 2px 4px rgba(15,20,25,.3);
 }
 .scroll-hint .dot{
   width:12px; height:12px; border-radius:50%; 
-  background:var(--bright-gold); 
-  border:2px solid var(--pure-black);
+  background:var(--gold-star); 
+  border:2px solid var(--primary-dark-sky);
   box-shadow:0 0 0 0 rgba(255,215,0,.8); 
   animation:pulseDot 2s infinite;
 }
